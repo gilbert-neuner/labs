@@ -48,7 +48,7 @@ data(survey)
 
 <li>Notice that both <span style="color: blue;">purchases</span> and <span style="color: blue;">survey</span> contain the variable <span style="color: blue;">customer_id</span> - this will be the ID on which we join <span style="color: blue;">purchases</span> and <span style="color: blue;">survey</span>.</li>
 
-<li>In lab 2G, <span style="color: blue;">colors</span> and <span style="color: blue;">stress</span> had the same number of observations. Moreover, the values for <span style="color: blue;">user.id</span> were exactly the same in <span style="color: blue;">colors</span> and <span style="color: blue;">stress</span>.</li>
+<li>Previously, <span style="color: blue;">stress_chill</span> and <span style="color: blue;">time_use</span> had the same number of observations. Moreover, the values for <span style="color: blue;">user.id</span> were exactly the same in <span style="color: blue;">stress_chill</span> and <span style="color: blue;">time_use</span>.</li>
 
 <li>In contrast, <span style="color: blue;">purchases</span> and <span style="color: blue;">survey</span> contain different amounts of observations. Moreover, some values of <span style="color: blue;">customer_id</span> occur in both <span style="color: blue;">purchases</span> and <span style="color: blue;">survey</span>, some occur only in <span style="color: blue;">purchases</span>, and some occur only in <span style="color: blue;">survey</span>. We can express this relationship using a <b>Venn diagram</b>.</li>
 
