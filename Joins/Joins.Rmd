@@ -14,7 +14,7 @@ output:
 
 <ul>
 
-<li>In lab 2G, you learned how to use <span style="color: blue;">merge</span> to <b>join</b> data sets horizontally. This is where we take one data set's columns and add them to the end of the other data set's columns based on matching an <b>ID</b> variable. In lab 2G, you joined <span style="color: blue;">colors</span> and <span style="color: blue;">stress</span> using <span style="color: blue;">user.id</span> as an ID.</li>
+<li>Previously, you learned how to use <span style="color: blue;">merge</span> to <b>join</b> data sets horizontally. This is where we take one data set's columns and add them to the end of the other data set's columns based on matching an <b>ID</b> variable. <span style="color: blue;">stress_chill</span> and <span style="color: blue;">time_use</span> were merged using <span style="color: blue;">user.id</span> as an ID.</li>
 
 <li>In this lab, we will learn some alternative ways to join two datasets. These are <b>inner joins</b>, <b>outer joins</b>, <b>left and right joins</b>, and <b>anti joins</b>. Before diving in, let's get to know our example datasets.</li>
 
@@ -94,7 +94,7 @@ inner_join(purchases, survey, by = "customer_id")
 
 <ul>
 
-<li>The second kind of join function is <span style="color: blue;">outer_join</span>, which includes an observation when its ID is present in the left <b>OR</b> right datasets. In our example, this would be the set of people that made a purchase at the store <b>OR</b> filled out the survey. This is illustrated in the Venn diagram:</li>
+<li>A second way to join two datasets is an <b>outer join</b>, which includes a observation when its ID is present in the left <b>OR</b> right datasets. In our example, this would be the set of people that made a purchase at the store <b>OR</b> filled out the survey. This is illustrated in the Venn diagram:</li>
 
 ![Outer join.](outer.png){width=400px}
 
@@ -104,9 +104,9 @@ inner_join(purchases, survey, by = "customer_id")
 merge(____, ____, by = "____")
 ```
 
-<li>where <span style="color: blue;">"merge"</span> is replaced with the specific join function you'd like to use.</li>
+<li>where <span style="color: blue;">"merge"</span> is replaced with the specific join function you'd like to use. The join function corresponding to outer join is <span style="color: blue;">full_join</span>.</li>
 
-<li><span style="color: red;">With this in mind, create an <span style="color: blue;">outer_join</span> of <span style="color: blue;">purchases</span> and <span style="color: blue;">survey</span>, and assign it to <span style="color: blue;">outer_customers</span>.</span></li>
+<li><span style="color: red;">With this in mind, create an outer join of <span style="color: blue;">purchases</span> and <span style="color: blue;">survey</span>, and assign it to <span style="color: blue;">outer_customers</span>.</span></li>
 
 <li><span style="color: red;">How many observations and variables does <span style="color: blue;">outer_customers</span> have compared to <span style="color: blue;">inner_customers</span>?</span></li>
 
