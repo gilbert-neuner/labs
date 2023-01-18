@@ -36,8 +36,6 @@ data(survey)
 ?survey
 ```
 
-<li><span style="color: red;"> How were the <span style="color: blue;">purchases</span> and <span style="color: blue;">survey</span> datasets collected? </span></li>
-
 <li><span style="color: red;"> Do <span style="color: blue;">purchases</span> and <span style="color: blue;">survey</span> have the same number of observations?</span></li>
 
 <li><span style="color: red;"> What variables do <span style="color: blue;">purchases</span> and <span style="color: blue;">survey</span> have in common? What variables are not shared by <span style="color: blue;">purchases</span> and <span style="color: blue;">survey</span>?</span></li>

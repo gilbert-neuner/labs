@@ -541,8 +541,8 @@ lab 2G, you joined <span style="color: blue;">colors</span> and <span style="col
 <li>
 In this lab, we will learn some alternative ways to join two datasets.
 These are <b>inner joins</b>, <b>outer joins</b>, <b>left and right
-joins</b>, and <b>anti joins</b>. First, let’s get to know our example
-datasets.
+joins</b>, and <b>anti joins</b>. Before diving in, let’s get to know
+our example datasets.
 </li>
 <li>
 Type the following commands into your console:
@@ -551,9 +551,6 @@ Type the following commands into your console:
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>?purchases</span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(survey)</span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>?survey</span></code></pre></div>
-<li>
-<span style="color: red;"> How were the <span style="color: blue;">purchases</span> and <span style="color: blue;">survey</span> datasets collected? </span>
-</li>
 <li>
 <span style="color: red;"> Do <span style="color: blue;">purchases</span> and <span style="color: blue;">survey</span> have the same number of
 observations?</span>
@@ -564,8 +561,8 @@ not shared by <span style="color: blue;">purchases</span> and <span style="color
 </li>
 </ul>
 </div>
-<div id="motivation-for-joins" class="slide section level2">
-<h1>Motivation for joins</h1>
+<div id="motivation" class="slide section level2">
+<h1>Motivation</h1>
 <ul>
 <li>
 Notice that both <span style="color: blue;">purchases</span> and <span style="color: blue;">survey</span> contain the variable <span style="color: blue;">customer_id</span> - this will be the ID on which
@@ -573,7 +570,7 @@ we join <span style="color: blue;">purchases</span> and <span style="color: blue
 </li>
 <li>
 In lab 2G, <span style="color: blue;">colors</span> and <span style="color: blue;">stress</span> had the same number of observations.
-Moreover, the values for <span style="color: blue;">user_id</span> were
+Moreover, the values for <span style="color: blue;">user.id</span> were
 exactly the same in <span style="color: blue;">colors</span> and <span style="color: blue;">stress</span>.
 </li>
 <li>
@@ -619,7 +616,7 @@ illustrated in the Venn diagram:
 </div>
 <li>
 Notice that this is exactly the behavior of <span style="color: blue;">merge</span>. This means that <span style="color: blue;">merge</span> carries out an inner join! In fact,
-the following produces the exact same output as the code from the
+the following code produces the exact same output as the code from the
 previous slide.
 </li>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inner_join</span>(purchases, survey, <span class="at">by =</span> <span class="st">&quot;customer_id&quot;</span>)</span></code></pre></div>
@@ -654,11 +651,11 @@ diagram:
 <p class="caption">Outer join.</p>
 </div>
 <li>
-The syntax for all the join functions is the same as <span style="color: blue;">inner_join</span>:
+The syntax for all the join functions is the same as <span style="color: blue;">merge</span>:
 </li>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">join</span>(____, ____, <span class="at">by =</span> <span class="st">&quot;____&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">merge</span>(____, ____, <span class="at">by =</span> <span class="st">&quot;____&quot;</span>)</span></code></pre></div>
 <li>
-where <span style="color: blue;">“join”</span> is replaced with the
+where <span style="color: blue;">“merge”</span> is replaced with the
 specific join function you’d like to use.
 </li>
 <li>
