@@ -14,7 +14,7 @@ output:
 
 <li>So far, you have learned how to properly visualize different kinds of data, including categorical data, numeric data, and time series data. Another kind of dataset we are often interested in analyzing is a text dataset. Text datasets consist of the words that occur in a written resource, such as websites, books, and emails. Today, you will perform basic text analysis on the novel <i>Pride and Prejudice</i> by Jane Austen.</li>
 
-<li><span style="color: red;">Use the <span style="color: blue;">data</span> command to obtain the <span style="color: blue;">pride</span> dataset, which consists of the words in <i>Pride and Prejudice</i>.</span></li>
+<li><span style="color: red;">Load in the <span style="color: blue;">pride</span> dataset, which consists of the words in <i>Pride and Prejudice</i>.</span></li>
 
 <li><span style="color: red;">How many words long is <i>Pride and Prejudice</i>?</span></li>
 
@@ -62,7 +62,7 @@ wordcloud(_____~_____, data = _____)
 
 <li>When analyzing text, we're not often interested in common words like "I", "a", "the". We call these words <b>stop words</b> (because we should <b>stop</b> using them in our analysis).</li>
 
-<li><span style="color: red;">Use the <span style="color: blue;">data</span> command to obtain the <span style="color: blue;">stop_words</span> dataset, a list of stop words. <span style="color: blue;">View</span> the <span style="color: blue;">stop_words</span> dataset.</span></li>
+<li><span style="color: red;">Load in the <span style="color: blue;">stop_words</span> dataset, a list of stop words. <span style="color: blue;">View</span> the <span style="color: blue;">stop_words</span> dataset.</span></li>
 
 <li><span style="color: red;">Create a new dataset containing observations of <span style="color: blue;">pride_words</span> that are not stop words. Assign this dataset to <span style="color: blue;">pride_words</span>.</span></li>
 
@@ -90,7 +90,7 @@ wordcloud(_____~_____, data = _____)
 
 <li>Words carry meaning. And we might be interested in altering our plot to show these different meanings. </li>
 
-<li><span style="color: red;">Use the <span style="color: blue;">data</span> command to obtain the <span style="color: blue;">sentiments</span> dataset, a list of words along with the sentiments most commonly associated with them (<span style="color: blue;">"positive"</span> or <span style="color: blue;">"negative"</span>). <span style="color: blue;">View</span> the <span style="color: blue;">sentiments</span> dataset.</span></li>
+<li><span style="color: red;">Load in the <span style="color: blue;">sentiments</span> dataset, a list of words along with the sentiments most commonly associated with them (<span style="color: blue;">"positive"</span> or <span style="color: blue;">"negative"</span>). <span style="color: blue;">View</span> the <span style="color: blue;">sentiments</span> dataset.</span></li>
 
 <li><span style="color: red;">Inner join <span style="color: blue;">pride_words</span> and <span style="color: blue;">sentiments</span>, and assign the resulting dataset to <span style="color: blue;">pride_sentiments</span>.</span></li>
 
