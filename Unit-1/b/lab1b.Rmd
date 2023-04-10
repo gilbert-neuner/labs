@@ -2,11 +2,12 @@
 title: "Get the picture?"
 author: "Lab 1B"
 date: "Directions: Follow along with the slides and answer the questions in **red** font in your journal."
-output: 
-  word_document:
-  slidy_presentation: 
+output:
+  slidy_presentation:
     css: ../../IDSLabCSSRev.css
     mathjax: ../../extras/mathjax-local/MathJax.js
+  word_document:
+  ioslides_presentation: default
 ---
 
 ```{r, eval=TRUE, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
