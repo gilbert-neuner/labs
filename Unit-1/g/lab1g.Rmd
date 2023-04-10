@@ -4,11 +4,11 @@ author: "Lab 1G"
 date: 'Directions: Follow along with the slides and answer the questions in **red**
   font in your journal.'
 output:
-  word_document:
   slidy_presentation:
     css: ../../IDSLabCSSRev.css
     mathjax: ../../extras/mathjax-local/MathJax.js
-  beamer_presentation: default
+  word_document:
+  ioslides_presentation: default
 ---
 
 ```{r setup, include=FALSE}

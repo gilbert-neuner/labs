@@ -3,10 +3,11 @@ title: "Export, Upload, Import"
 author: "Lab 1C"
 date: "Directions: Follow along with the slides and answer the questions in **red** font in your journal."
 output:
-  word_document:
-  slidy_presentation: 
+  slidy_presentation:
     css: ../../IDSLabCSSRev.css
     mathjax: ../../extras/mathjax-local/MathJax.js
+  word_document:
+  ioslides_presentation: default
 ---
 
 ```{r setup, include=FALSE}
