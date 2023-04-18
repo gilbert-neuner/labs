@@ -61,12 +61,12 @@ library(mobilizr)
 ## Altering the layout
 
 - It would be much easier to compare the sugar levels of salty and sweet snacks if the dotPlots were stacked on top of one another.
-- We can change the **layout** of our separated plots by including the `layout` option in our `dotPlot` function. 
+- We can change the _layout_ of our separated plots by including the `layout` option in our `dotPlot` function. 
     - **Add the following option to the code you used to create the `dotPlot` split by `salty_sweet`.**
 ```{r, eval = FALSE, echo = TRUE }
 layout = c(1,2)
 ```
-- _Hint_: Use a similar syntax used with the `nint` option to add the `layout` option to the `dotPlot` function.
+- Hint: Use a similar syntax used with the `nint` option to add the `layout` option to the `dotPlot` function.
 
 ## Subsetting
 
@@ -78,13 +78,14 @@ layout = c(1,2)
 
 ## The filter function
 
-- Creating two plots, one for salty and one for sweet is useful for comparing salty and sweet but what if we want to examine only one group by itself?
-- **Start by creating a subset of the data:**
-    - **Fill in the blanks below with the data and variable names needed to filter the `Salty` snacks from our `food` data:**
+- Creating a plot for `Salty` and a plot for `Sweet` is useful for comparing `Salty` and `Sweet`. What if we want to examine one group by itself?
+- The line of code below creates a subset of the `food` dataset containing only `Salty` snacks. We will break it down piece by piece in the next few slides.
+- **Run the line of code below.**
+
 ```{r, eval = FALSE, echo = TRUE}
-food_salty <- filter(____ , ____ == "Salty")
+food_salty <- filter(food, salty_sweet == "Salty")
 ```
-- **View `food_salty` and write down the number of observations in it. Then use the subset data to make a dotPlot of the `sodium` in our `Salty` snacks.**
+- **`View` `food_salty` and write down the number of observations in it. Then use `food_salty` to make a dotPlot of the `sodium` in our `Salty` snacks.**
 
 
 ## So what's really going on?
@@ -92,7 +93,7 @@ food_salty <- filter(____ , ____ == "Salty")
 - Coding in R is really just about supplying directions in a way that R understands. 
     - We'll start by focusing on everything to the right of the `<-` symbol
 ```{r, eval = FALSE, echo = TRUE}
-food_salty <- filter(____ , ____ == "Salty")
+food_salty <- filter(food, salty_sweet == "Salty")
 ```
 - `filter()` tells R that we're going to look at only the values in our data that follow a _rule_.
 - The first blank should be the data we're going to filter down into a smaller set (based on our rule).
@@ -105,7 +106,7 @@ food_salty <- filter(____ , ____ == "Salty")
     1. `salty_sweet`, is the particular _variable_ we want to use to select our subset.
     2. `"Salty"` is the _value_ of the variable that we want to select. We only want to see data with the value `"Salty"` for the variable `salty_sweet`.
     3. `==`  describes how we want to relate our variable (`salty_sweet`) to our value (`"Salty"`). In this case, we want values of `salty_sweet` that are _exactly equal_ to `"Salty"`.
-- <font color="green">Notice:</font> _Values_ (that are also words) have quotation marks around them. _Variables_ do not.
+- Notice: _Values_ (that are also words) have quotation marks around them. _Variables_ do not.
 
 
 ## More on ==
@@ -126,14 +127,14 @@ head(~salty_sweet == "Salty", data = food)
 - The arrow <- is called the "assignment" operator. It assigns names (on the left) to values (on the right)
     - We now focus on everything to the left of, and including, the "<-" symbol
 ```{r, eval = FALSE, echo = TRUE}
-food_salty <- filter(____ , ____ == "Salty")
+food_salty <- filter(food, salty_sweet == "Salty")
 ```
 
 
 ## Saving our subset
 
 ```{r, eval = FALSE, echo = TRUE}
-food_salty <- filter(____ , ____ == "Salty")
+food_salty <- filter(food, salty_sweet == "Salty")
 ```
 
 - This code then: 
