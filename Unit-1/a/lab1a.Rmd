@@ -8,8 +8,8 @@ date: 'Directions: Follow along with the slides and answer the questions in **re
   Space, Click, Right Arrow or swipe left to move to the next slide.'
 output:
   slidy_presentation:
-    css: ../../IDSLabCSSRev.css
-    mathjax: ../../extras/mathjax-local/MathJax.js
+    css: ../IDSLabCSSRev.css
+    mathjax: ../extras/mathjax-local/MathJax.js
   word_document:
   ioslides_presentation: default
 ---
