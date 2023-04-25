@@ -559,13 +559,13 @@ for <code>height</code> and <code>gender</code> (use the
 <em>History</em> pane again if you need help to <code>View</code> your
 data).
 <ul>
-<li><strong>Is <code>height</code> a numerical or categorical variable?
-Why?</strong></li>
-<li><strong>Is <code>gender</code> a numerical or categorical variable?
-Why?</strong></li>
-<li><strong>List either the different categories or what you think the
+<li><b>Is <code>height</code> a numerical or categorical variable?
+Why?</b></li>
+<li><b>Is <code>gender</code> a numerical or categorical variable?
+Why?</b></li>
+<li><b>List either the different categories or what you think the
 measured units are for <code>height</code> and
-<code>gender</code>.</strong></li>
+<code>gender</code>.</b></li>
 </ul></li>
 </ul>
 </div>
@@ -577,10 +577,10 @@ measured units are for <code>height</code> and
 code displayed in the <em>History</em> pane to resubmit previously typed
 commands). Use the code’s output to help you complete the following:
 <ul>
-<li><strong>Write down 3 variables that you think are
-<em>categorical</em> variables and why.</strong></li>
-<li><strong>Write down 3 variables that you think are <em>numerical</em>
-variables and why.</strong></li>
+<li><b>Write down 3 variables that you think are <em>categorical</em>
+variables and why.</b></li>
+<li><b>Write down 3 variables that you think are <em>numerical</em>
+variables and why.</b></li>
 </ul></li>
 </ul>
 </div>
@@ -592,17 +592,18 @@ variables and why.</strong></li>
 <ul>
 <li>One way to view this info would be to click on the little blue arrow
 next to <code>cdc</code> in the <em>Environment</em> pane.</li>
-<li>Another way would be to run the following in the console:</li>
+<li><strong>Another way would be to run the following in the
+console:</strong></li>
 </ul></li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(cdc)</span></code></pre></div>
 <ul>
 <li>Look at the <code>str</code>ucture of your <code>cdc</code> data and
 answer:</li>
-<li><strong>What information does the <code>str</code> function
-output?</strong></li>
-<li><strong>Were you able to correctly guess which variables were
-categorical and numeric? Which ones did you mislabel?</strong></li>
+<li><b>What information does the <code>str</code> function
+output?</b></li>
+<li><b>Were you able to correctly guess which variables were categorical
+and numeric? Which ones did you mislabel?</b></li>
 </ul>
 </div>
 <div id="visualizing-data" class="slide section level2">
@@ -610,13 +611,13 @@ categorical and numeric? Which ones did you mislabel?</strong></li>
 <ul>
 <li>Visualizing data is a really helpful way to learn about our
 variables.</li>
-<li>Choose one numeric and one categorical variable from the data and
-create both a <code>bargraph</code> and a <code>histogram</code> for
-each variable.
+<li><strong>Choose one numeric and one categorical variable from the
+data and create both a <code>bargraph</code> and a
+<code>histogram</code> for each variable.</strong>
 <ul>
-<li><strong>Which function, either <code>bargraph</code> or
+<li><b>Which function, either <code>bargraph</code> or
 <code>histogram</code> is better at visualizing categorical variables?
-Which is better at visualizing numerical variables?</strong></li>
+Which is better at visualizing numerical variables?</b></li>
 </ul></li>
 </ul>
 </div>
@@ -626,9 +627,8 @@ Which is better at visualizing numerical variables?</strong></li>
 <li><strong>Make a graph that shows the distribution of people’s
 weight.</strong>
 <ul>
-<li><strong>Describe the distribution of <code>weight</code>. Make sure
-to describe the shape, center and spread of the
-distribution.</strong></li>
+<li><b>Describe the distribution of <code>weight</code>. Make sure to
+describe the shape, center and spread of the distribution.</b></li>
 </ul></li>
 <li><em>Options</em> can be added to plotting functions to change their
 appearance. The code below includes the <code>nint</code> option which
@@ -642,10 +642,10 @@ questions that follow:</strong></li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(<span class="sc">~</span>weight, <span class="at">data =</span> cdc, <span class="at">nint =</span> <span class="dv">3</span>)</span></code></pre></div>
 <ul>
-<li><strong>How did including the option <code>nint = 3</code> change
-the <code>histogram</code>?</strong></li>
-<li><strong>Does setting <code>nint = 3</code> impact how you would
-describe the shape, center and spread?</strong></li>
+<li><b>How did including the option <code>nint = 3</code> change the
+<code>histogram</code>?</b></li>
+<li><b>Does setting <code>nint = 3</code> impact how you would describe
+the shape, center and spread?</b></li>
 <li><strong>Try other values for <code>nint</code>. What value produced
 the best graph? Why?</strong></li>
 </ul>
@@ -656,11 +656,10 @@ the best graph? Why?</strong></li>
 <li><strong>Make a graph that shows how often people in our data texted
 while driving.</strong>
 <ul>
-<li><strong>What does the y-axis represent?</strong></li>
-<li><strong>What does the x-axis tell us?</strong></li>
-<li><strong>Would you say that <em>most</em> people <em>never</em>
-texted while driving? What does the word <em>most</em>
-mean?</strong></li>
+<li><b>What does the y-axis represent?</b></li>
+<li><b>What does the x-axis tell us?</b></li>
+<li><b>Would you say that <em>most</em> people <em>never</em> texted
+while driving? What does the word <em>most</em> mean?</b></li>
 <li><strong>Approximately what percent of the people texted while
 driving for 20 or more days? (Hint: There’s 13677 students in our
 data.)</strong></li>
@@ -675,12 +674,12 @@ side-by-side bargraph:</strong></li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bargraph</span>(<span class="sc">~</span> ___, <span class="at">data =</span> ___, <span class="at">groups =</span> ___)</span></code></pre></div>
 <ul>
-<li><strong>Write a sentence explaining how boys and girls differ when
-it comes to texting while driving.</strong></li>
-<li><strong>Would you say that most girls never text and drive? Would
-you say that most boys never text and drive?</strong></li>
-<li><strong>How did including the <code>groups</code> argument in your
-code change the graph?</strong></li>
+<li><b>Write a sentence explaining how boys and girls differ when it
+comes to texting while driving.</b></li>
+<li><b>Would you say that most girls never text and drive? Would you say
+that most boys never text and drive?</b></li>
+<li><b>How did including the <code>groups</code> argument in your code
+change the graph?</b></li>
 </ul>
 </div>
 <div id="do-malesfemales-have-similar-heights" class="slide section level2">
@@ -695,11 +694,10 @@ of heights, separately, for males and females.
 <code>histogram</code> for the <code>height</code> of males and
 females.</strong>
 <ul>
-<li><strong>Can you use this graphic to answer the question at the top
-of the slide? Why or why not?</strong></li>
-<li><strong>Is grouping numeric values, such as heights, as helpful as
-grouping categorical variables, such as texting &amp;
-driving?</strong></li>
+<li><b>Can you use this graphic to answer the question at the top of the
+slide? Why or why not?</b></li>
+<li><b>Is grouping numeric values, such as heights, as helpful as
+grouping categorical variables, such as texting &amp; driving?</b></li>
 </ul></li>
 </ul>
 </div>
@@ -708,16 +706,15 @@ driving?</strong></li>
 <ul>
 <li><code>groups</code> uses color to differentiate between groups.
 <ul>
-<li><strong>Why does this work for bargraphs but not for
-histograms?</strong></li>
+<li>Why does this work for bargraphs but not for histograms?</li>
 </ul></li>
 <li><strong>Fill in the blanks with the correct variables to create a
 split histogram to answer the questions below:</strong></li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(<span class="sc">~</span> ____ <span class="sc">|</span> ____ , <span class="at">data =</span> ____ )</span></code></pre></div>
 <ul>
-<li><strong>Do you think males &amp; females have similar heights? Use
-the plot you create to justify your answer.</strong></li>
+<li><b>Do you think males &amp; females have similar heights? Use the
+plot you create to justify your answer.</b></li>
 <li><strong>Just like we did for the histogram, is it possible to create
 a <em>split</em> bargraph? Try to create a bargraph of
 <code>drive_text</code> that’s split by <code>gender</code> to find
@@ -729,8 +726,8 @@ out.</strong></li>
 <ul>
 <li>In this lab, we looked at the texting &amp; driving habits of boys
 and girls.</li>
-<li><strong>What other factors do you think might affect how often
-people text and drive?</strong>
+<li><b>What other factors do you think might affect how often people
+text and drive?</b>
 <ul>
 <li><strong>Choose one variable from the <code>cdc</code> data, make a
 graph, and use the graph to describe how <code>drive_text</code> use

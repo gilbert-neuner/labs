@@ -526,8 +526,10 @@ list-style-type: none;
   <p class="author">
 Lab 1A
   </p>
-  <p class="date"><p>Directions: Follow along with the slides and answer
-the questions in <strong>red</strong> font in your journal.</p>
+  <p class="date"><p>Directions: Follow along with the slides,
+completing the questions in <font color="#25679E"><b>blue</b></font> on
+your computer, and answering the questions in <strong>red</strong> in
+your journal.</p>
 Space, Click, Right Arrow or swipe left to move to the next slide.</p>
 </div>
 <div id="welcome-to-the-labs" class="slide section level2">
@@ -552,7 +554,8 @@ Control (CDC)
 <ul>
 <li>The CDC is a federal institution that studies public health.</li>
 </ul></li>
-<li>Type these two commands into your console:</li>
+<li><font color="#10437F"><b>Type these two commands into your
+console:</b></font></li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(cdc)</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(cdc)</span></code></pre></div>
@@ -606,9 +609,9 @@ describes a person.</li>
 <ul>
 <li>Now that we’ve looked at our data, let’s look at how RStudio is
 organized.</li>
-<li>RStudio’s main window is composed of four <em>panes</em></li>
-<li>Find the pane that has a <em>tab</em> titled <em>Environment</em>
-and click on the <em>tab</em>.
+<li>RStudio’s main window is composed of four <em>panes</em>.</li>
+<li><font color="#25679E"><b>Find the pane that has a <em>tab</em> titled
+<em>Environment</em> and click on the <em>tab</em>.</b></font>
 <ul>
 <li>This pane contains a list of everything that’s currently available
 for R to use.</li>
@@ -620,8 +623,12 @@ set?</strong></li>
 student?</strong></li>
 </ul>
 </div>
-<div id="type-the-following-commands-into-the-console" class="slide section level2">
-<h1>Type the following commands into the console</h1>
+<div id="some-new-functions" class="slide section level2">
+<h1>Some new functions</h1>
+<ul>
+<li><font color="#25679E"><b>Type the following commands into the
+console:</b></font></li>
+</ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(cdc)</span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(cdc)</span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(cdc)</span></code></pre></div>
@@ -655,13 +662,16 @@ are REALLY important.</li>
 <div id="syntax-matters" class="slide section level2">
 <h1>Syntax matters</h1>
 <ul>
-<li><strong>Run the following commands and write down what happens after
-each. Which does R understand?</strong></li>
+<li><font color="#25679E"><b>Run the following commands.</b></font>
+<strong>What happens after each command?</strong></li>
 </ul>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Names</span>(cdc)</span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">NAMES</span>(cdc)</span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cdc)</span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(CDC)</span></code></pre></div>
+<ul>
+<li><strong>Which does R understand?</strong></li>
+</ul>
 </div>
 <div id="rs-most-important-syntax" class="slide section level2">
 <h1>R’s most important syntax</h1>
@@ -692,8 +702,8 @@ graphs.</li>
 <div id="syntax-in-action" class="slide section level2">
 <h1>Syntax in action</h1>
 <ul>
-<li><p>Search through the different panes. Find and then click on the
-<em>Plots</em> tab.</p>
+<li><p><font color="#25679E"><b>Search through the different panes. Find
+and then click on the <em>Plots</em> tab.</b></font></p>
 <ul>
 <li>To get back to the slides, find and then click on the
 <em>Viewer</em> tab.</li>
@@ -701,8 +711,8 @@ graphs.</li>
 <li><p><strong>Which one of these plots would be useful for answering
 the question: <em>Is it unusual for students in the CDC dataset to be
 taller than 1.8 meters?</em></strong></p></li>
-<li><p>Run the three commands below then answer the question that
-follows.</p></li>
+<li><p><font color="#25679E"><b>Run the three commands below then answer
+the question that follows.</b></font></p></li>
 </ul>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(<span class="sc">~</span>height, <span class="at">data =</span> cdc)</span></code></pre></div>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bargraph</span>(<span class="sc">~</span>drive_text, <span class="at">data =</span> cdc)</span></code></pre></div>
@@ -725,12 +735,13 @@ it?</strong></li>
 every high school aged student in the US?</strong></li>
 <li><strong>How might the CDC use this data? Who else could benefit from
 using this data?</strong></li>
-<li><strong>Write the code to visualize the distribution of weights of
-the students in the CDC data with a histogram. What is the
-<em>typical</em> weight?</strong></li>
-<li><strong>Write the code to create a bargraph to visualize the
-distribution of how often students ate fruit. About how many students
-did not eat fruit over the previous 7 days?</strong></li>
+<li><font color="#25679E"><b>Write the code to visualize the distribution
+of weights of the students in the CDC data with a histogram.</b></font>
+<strong>What is the <em>typical</em> weight?</strong></li>
+<li><font color="#25679E"><b>Write the code to create a bargraph to
+visualize the distribution of how often students ate fruit.</b></font>
+<strong>About how many students did not eat fruit over the previous 7
+days?</strong></li>
 </ul></li>
 </ul>
 </div>
