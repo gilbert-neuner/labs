@@ -1,8 +1,10 @@
 ---
 title: "What's the FREQ?"
 author: "Lab 1G"
-date: 'Directions: Follow along with the slides and answer the questions in **red**
-  font in your journal.'
+date: 'Directions: Follow along with the slides, completing the questions in <font color=#25679E><b>blue</b></font> on your computer, and answering the questions in **red** in your journal.  
+  
+  
+  Space, Click, Right Arrow or swipe left to move to the next slide.'
 output:
   slidy_presentation:
     css: ../IDSLabCSSRev.css
@@ -41,7 +43,7 @@ data(atu_clean)
 ## Frequency tables?
 
 - When it comes to categories, about all you can do is _count_ or _tally_ how often each category comes up in the data.
-- Fill in the blanks below to answer the following: **How many more _females_ than _males_ are there in our ATU data?**
+- **Fill in the blanks below to answer the following: How many more _females_ than _males_ are there in our ATU data?**
 ```{r, eval = FALSE, echo = TRUE}
 tally(~ ____, data = ____)
 ```
@@ -51,7 +53,7 @@ tally(~ ____, data = ____)
 
 - Counting the categories of a single variable is nice, but often times we want to make comparisons.
 - For example, what if we wanted to answer the question:
-  - **Does one `gender` seem to have a higher occurrence of physical challenges than the other? If so, which one and explain your reasoning?**
+  - Does one `gender` seem to have a higher occurrence of physical challenges than the other? If so, which one and explain your reasoning?
   
 - We could use the following plot to try and answer this question:
   
@@ -62,7 +64,8 @@ bargraph(~phys_challenge | gender, data = atu_clean)
 ```
 
 - The split bargraph helps us get an idea of the answer to the question, but we need to provide precise values.
-- **Use a line of code, that's similar to how we facet plots, to obtain a tally of the number of people with physical challenges and their genders.**
+- <span class="blue">Use a line of code, that's similar to how we facet plots, to obtain a tally of the number of people with physical challenges and their genders.</span>
+- **Write down the resulting table.**
 
 
 

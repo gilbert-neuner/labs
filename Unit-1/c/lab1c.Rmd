@@ -1,7 +1,10 @@
 ---
 title: "Export, Upload, Import"
 author: "Lab 1C"
-date: "Directions: Follow along with the slides and answer the questions in **red** font in your journal."
+date: 'Directions: Follow along with the slides, completing the questions in <font color=#25679E><b>blue</b></font> on your computer, and answering the questions in **red** in your journal.  
+  
+  
+  Space, Click, Right Arrow or swipe left to move to the next slide.'
 output:
   slidy_presentation:
     css: ../IDSLabCSSRev.css
@@ -37,9 +40,9 @@ utils::data(cdc)
 
 ## Exporting
 
-- **To begin, go to the IDS Tools page.**
-  - **Click on the <font color="green">Campaign Manager</font>.**
-  - **Fill in your username and password and click "Sign in."**
+- <span class="blue">To begin, go to the IDS Tools page.</span>
+  - <span class="blue">Click on the <font color="green">Campaign Manager</font>.</span>
+  - <span class="blue">Fill in your username and password and click "Sign in."</span>
 <center>![Campaign manager](images/campaign_manager.png){ style="max-height: 40vh; max-width: 80%;" }</center>
 If you forget your username or password, ask your teacher to remind you. 
 
@@ -49,7 +52,7 @@ If you forget your username or password, ask your teacher to remind you.
 <center>![Campaign Manager](images/campaign_manager1.png){ width=90% }</center>
 
 - After logging in, your screen should look similar to this.
-- **Click on the dropdown arrow for the campaign you are interested in downloading.**
+- <span class="blue">Click on the dropdown arrow for the campaign you are interested in downloading.</span>
   - At this point in the course, it will most likely be the Food Habits campaign.
 
 
@@ -57,7 +60,7 @@ If you forget your username or password, ask your teacher to remind you.
 
 - The options for the dropdown menu will look like this: 
 <center>![Campaign tab](images/dropdown.png){ style="max-height: 50vh; max-width: 30%;" }</center>
-- **Click on the option labeled <font color="green">Export Data</font>.**
+- <span class="blue">Click on the option labeled <font color="green">Export Data</font>.</span>
   - Remember where you save your file!
 
 
@@ -69,15 +72,15 @@ If you forget your username or password, ask your teacher to remind you.
 
 ## Uploading
 
-- **Look at the four different _panes_ in RStudio.**
-  - **Find the _pane_ with a <font color="green">Files</font> tab.**
-  - **Click it!**
+- <span class="blue">Look at the four different _panes_ in RStudio.</span>
+  - <span class="blue">Find the _pane_ with a <font color="green">Files</font> tab.</span>
+  - <span class="blue">Click it!</span>
 
 <center> ![Upload Button](images/FilesPane.png){ width=50% } </center>
 
-- **Click the button on the Files pane that says "Upload".**
-  - **Click on "Choose File" and find the SurveyResponses.csv file you saved to your computer.**
-  - **Hit the _OK_ button.**
+- <span class="blue">Click the button on the Files pane that says "Upload".</span>
+  - <span class="blue">Click on "Choose File" and find the _SurveyResponses.csv_ file you saved to your computer.</span>
+  - <span class="blue">Hit the _OK_ button.</span>
 - Voila!
   - If you look in the <font color="green">Files</font> pane, you should be able to find your data!
 
@@ -95,8 +98,8 @@ If you forget your username or password, ask your teacher to remind you.
 
 <center>![import data](images/RStudioCloudImport.png){ width=50% }</center>
 
-- **On the Files pane, find the data you want to <font color="green">Import</font>.
-- **Click on the name of the file and choose the option "Import Data set...".**
+- <span class="blue">On the Files pane, find the data you want to <font color="green">Import</font>.</span>
+- <span class="blue">Click on the name of the file and choose the option "Import Data set...".</span>
 
 
 ## Data Preview
@@ -134,10 +137,10 @@ View(data.file)
 - The <font color="green">Files</font> tab has a few other features to help keep you organized.
   - _SurveyResponse_ probably isn't the best name for your data. Click <font color="green">Rename</font> to give it a clearer name.
   - Often, it's helpful to give your data file the same name as when you import your data.
-  - So in this case, we could name our data file _foodhabits.csv_
+  - So in this case, we could name our data file _foodhabits.csv_.
 
 
 ## Export, upload, import
 
 - After you <font color="green">Export</font>, <font color="green">Upload</font>, <font color="green">Import</font> your data you're ready to analyze. 
-- **`View` your data, select a variable and try to make an appropriate plot for that variable.**
+- <span class="blue">`View` your data, select a variable and try to make an appropriate plot for that variable.</span>

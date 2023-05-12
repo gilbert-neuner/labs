@@ -1,7 +1,10 @@
 ---
 title: "Zooming Through Data"
 author: "Lab 1D"
-date: "Directions: Follow along with the slides and answer the questions in **red** font in your journal."
+date: 'Directions: Follow along with the slides, completing the questions in <font color=#25679E><b>blue</b></font> on your computer, and answering the questions in **red** in your journal.  
+  
+  
+  Space, Click, Right Arrow or swipe left to move to the next slide.'
 output:
   slidy_presentation:
     css: ../IDSLabCSSRev.css
@@ -31,7 +34,7 @@ library(mobilizr)
 - A `dotPlot` is another plot that can be used to analyze a numerical variable.
   - Dotplots are better suited for smaller data sets. If data sets are too large, the dots become too small to see.
   - Similarly, distributions with a large spread might impact the readability of the plot.
-- **Use the `dotPlot()` function to create a `dotPlot` of the amount of `sugar` in our `food` data.**
+- <span class="blue">Use the `dotPlot()` function to create a `dotPlot` of the amount of `sugar` in our `food` data.</span>
     - The code to create a `dotPlot` is exactly like you'd use to make a `histogram`.
     - Make sure to use a capital _P_ in `dotPlot`.
     
@@ -40,20 +43,20 @@ library(mobilizr)
 
 - While a `dotPlot` should conserve the exact value of each data point, sometimes it behaves like a histogram in that it lumps values together.
 
-- **Create a more accurate `dotPlot` by including the `nint` option.**
-  - Set `nint` equal to `max(sugar) - min(sugar) + 1`.
-    - On your `food` data spreadsheet, click on the sugar header to sort in ascending order (to obtain minimum)
-    - Click on the sugar header again to sort in descending order (to obtain maximum)
-  - Use your history pane to see how we included the option `nint` with the `histogram` function.
+- <span class="blue">Create a more accurate `dotPlot` by including the `nint` option.</span>
+  - <span class="blue">Set `nint` equal to `max(sugar) - min(sugar) + 1`.
+    - <span class="blue">On your `food` data spreadsheet, click on the sugar header to sort in ascending order (to obtain minimum). </span>
+    - <span class="blue">Click on the sugar header again to sort in descending order (to obtain maximum). </span>
+  - <span class="blue">Use your history pane to see how we included the option `nint` with the `histogram` function.</span>
   
-- Pro-tip: If the `dotPlot` comes out looking wonky, try changing the value of the _character expansion_ option, `cex`. 
+- Pro tip: If the `dotPlot` comes out looking wonky, try changing the value of the _character expansion_ option, `cex`. 
     - The default value is `1`. Try a few values between `0` and `1` and a few more values larger than `1`.
 
 ## Splitting data sets
 
 - In lab 1B, we learned that we can _facet_ (or split) our data based on a categorical variable.
 
-- **Split the `dotPlot` displaying the distribution of grams of sugar in two, by faceting on our observations' `salty_sweet` variable.**
+- <span class="blue">Split the `dotPlot` displaying the distribution of grams of sugar in two, by faceting on our observations' `salty_sweet` variable.</span>
     - **Describe how R decides which observations go into the left or right plot.**
     - **What does each _dot_ in the plot represent?**
 
@@ -62,7 +65,7 @@ library(mobilizr)
 
 - It would be much easier to compare the sugar levels of salty and sweet snacks if the dotPlots were stacked on top of one another.
 - We can change the _layout_ of our separated plots by including the `layout` option in our `dotPlot` function. 
-    - **Add the following option to the code you used to create the `dotPlot` split by `salty_sweet`.**
+    - <span class="blue">Add the following option to the code you used to create the `dotPlot` split by `salty_sweet`.</span>
 ```{r, eval = FALSE, echo = TRUE }
 layout = c(1,2)
 ```
@@ -80,12 +83,12 @@ layout = c(1,2)
 
 - Creating a plot for `Salty` and a plot for `Sweet` is useful for comparing `Salty` and `Sweet`. What if we want to examine one group by itself?
 - The line of code below creates a subset of the `food` dataset containing only `Salty` snacks. We will break it down piece by piece in the next few slides.
-- **Run the line of code below.**
+- <span class="blue">Run the line of code below.</span>
 
 ```{r, eval = FALSE, echo = TRUE}
 food_salty <- filter(food, salty_sweet == "Salty")
 ```
-- **`View` `food_salty` and write down the number of observations in it. Then use `food_salty` to make a dotPlot of the `sodium` in our `Salty` snacks.**
+- <span class="blue">`View` `food_salty` and write down the number of observations in it. Then use `food_salty` to make a dotPlot of the `sodium` in our `Salty` snacks.</span>
 
 
 ## So what's really going on?
@@ -124,8 +127,8 @@ head(~salty_sweet == "Salty", data = food)
 
 - To use our subset data we need to save it first.
     - When we _save_ something in R what we are really doing is giving a value, or set of values, a specific name for us to use later.
-- The arrow <- is called the "assignment" operator. It assigns names (on the left) to values (on the right)
-    - We now focus on everything to the left of, and including, the "<-" symbol
+- The arrow <- is called the "assignment" operator. It assigns names (on the left) to values (on the right).
+    - We now focus on everything to the left of, and including, the "<-" symbol.
 ```{r, eval = FALSE, echo = TRUE}
 food_salty <- filter(food, salty_sweet == "Salty")
 ```
@@ -167,8 +170,8 @@ my_sub <- filter(food , salty_sweet == "Salty", calories < 200)
     
 - Because you are now working with subsets of data, it is important to label our plots and make this distinction.
 
-  - We can use the `main` option to add a title to our plots 
-    - Add the following option to the code you used to create the `dotPlot` of the sugar in `Sweet` snacks.
+  - We can use the `main` option to add a title to our plots.
+    - <span class="blue">Add the following option to the code you used to create the `dotPlot` of the sugar in `Sweet` snacks.</span>
 ```{r, eval = FALSE, echo = TRUE }
 main = "Distribution of sugar in sweet snacks"
 ```
