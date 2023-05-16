@@ -546,8 +546,8 @@ slasher films more likely to survive until the end of the film than
 men?</em></li>
 <li>To answer this question, we’ll learn how to use permuted data to
 gauge how likely an event occurs by chance.</li>
-<li>To begin, use the <code>data</code> function to load the
-<code>slasher</code> data file.
+<li><span class="blue">To begin, use the <code>data</code> function to
+load the <code>slasher</code> data file.</span>
 <ul>
 <li>The data contains information about 485 characters from a random
 sample of 50 <em>slasher</em> horror films.</li>
@@ -590,10 +590,8 @@ tells us how many of them <code>Dies</code> or
 <li><strong>The last question on the previous slide can be answered
 using the line of code below. Why?</strong>
 <ul>
-<li><ul>
 <li>Pro-tip: Include the option <code>format = &quot;percent&quot;</code> to
 obtain a two-way table with percentages.</li>
-</ul></li>
 </ul></li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(survival <span class="sc">~</span> gender, <span class="at">format =</span> <span class="st">&quot;percent&quot;</span>, <span class="at">data =</span> slasher, <span class="at">margin =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
@@ -624,15 +622,15 @@ repeated random shuffling.</li>
 <li>When we shuffle data, we use our original data set as a starting
 point.
 <ul>
-<li>Run the following and write down the resulting table on a piece of
-paper.</li>
+<li><strong>Run the following and write down the resulting table on a
+piece of paper.</strong></li>
 </ul></li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(survival <span class="sc">~</span> gender, <span class="at">data =</span> slasher)</span></code></pre></div>
 <ul>
-<li>Now run the following to randomly reassign each
+<li><strong>Now run the following to randomly reassign each
 <code>survival</code> status to each observation. Compare the resulting
-table to the one you wrote down.</li>
+table to the one you wrote down.</strong></li>
 </ul>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(<span class="fu">shuffle</span>(survival) <span class="sc">~</span> gender, </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> slasher)</span></code></pre></div>
@@ -657,12 +655,13 @@ chance or not.</strong></li>
 <div id="detecting-differences" class="slide section level2">
 <h1>Detecting differences</h1>
 <ul>
-<li>To help us decide if the difference in percentages in our
+<li><p>To help us decide if the difference in percentages in our
 <em>actual</em> data occurs by chance or not, we can use the
 <code>do()</code> function to shuffle our data many times and see how
-often our <em>actual</em> difference occurred by chance.</li>
+often our <em>actual</em> difference occurred by chance.</p></li>
+<li><p><span class="blue">Run the following lines of
+code:</span></p></li>
 </ul>
-<p>Run the following lines of code:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>shuffled_outcomes <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10</span>) <span class="sc">*</span> <span class="fu">tally</span>(<span class="fu">shuffle</span>(survival) <span class="sc">~</span> gender, <span class="at">format =</span> <span class="st">&quot;percent&quot;</span>, </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">data =</span> slasher)</span></code></pre></div>
@@ -674,12 +673,13 @@ survive than females?</strong></p></li>
 between males and females?</strong></p></li>
 <li><p><strong>What patterns are emerging from these
 simulations?</strong></p></li>
-<li><p>Ten simulations is not enough. Use <code>do</code>,
-<code>tally</code> and <code>shuffle</code> functions to
-<code>shuffle</code> the <code>survival</code> variable and
+<li><p><span class="blue">Ten simulations is not enough. Use
+<code>do</code>, <code>tally</code> and <code>shuffle</code> functions
+to <code>shuffle</code> the <code>survival</code> variable and
 <code>tally</code> the percentage of women who survived 500 times.
 <code>Assign</code> your 500 shuffles the name
-<code>shuffled_survivors</code>. Use <code>set.seed(1)</code></p></li>
+<code>shuffled_survivors</code>. Use <code>set.seed(1)</code>.
+</span></p></li>
 </ul>
 </div>
 <div id="now-what" class="slide section level2">
@@ -691,9 +691,10 @@ data.</li>
 <li>To compute the differences for each shuffle we can use the
 <code>mutate</code> function.
 <ul>
-<li>Fill in the blanks to add a new column that contains the difference
-between <code>Survives.Female</code> and <code>Survives.Male</code> to
-our <code>shuffled_survivors</code> data.</li>
+<li><span class="blue">Fill in the blanks to add a new column that
+contains the difference between <code>Survives.Female</code> and
+<code>Survives.Male</code> to our <code>shuffled_survivors</code>
+data.</span></li>
 </ul></li>
 </ul>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>shuffled_survivors <span class="ot">&lt;-</span> <span class="fu">mutate</span>(shuffled_survivors, </span>
@@ -702,15 +703,16 @@ our <code>shuffled_survivors</code> data.</li>
 <div id="time-to-decide" class="slide section level2">
 <h1>Time to decide</h1>
 <ul>
-<li><p>Create a <code>histogram</code> of the <code>difference</code>s
-in our <code>shuffled_survivors</code> data. Based on your plot, answer
-the following:</p>
+<li><p><span class="blue">Create a <code>histogram</code> of the
+<code>difference</code>s in our <code>shuffled_survivors</code> data.
+Based on your plot, answer the following:</span></p>
 <ul>
 <li><strong>What was the typical difference in percentages between men
 and women survivors?</strong></li>
 </ul></li>
-<li><p>Include a vertical line in your histogram of the <em>actual</em>
-difference by running the code below:</p></li>
+<li><p><span class="blue">Include a vertical line in your histogram of
+the <em>actual</em> difference by running the code
+below:</span></p></li>
 </ul>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add_line</span>(<span class="at">vline =</span> <span class="fl">22.52252</span> <span class="sc">-</span> <span class="fl">13.30798</span>)</span></code></pre></div>
 <ul>
@@ -745,17 +747,18 @@ perhaps there is something more going on than just chance alone …</li>
 <div id="on-your-own" class="slide section level2">
 <h1>On your own</h1>
 <ul>
-<li>Carry out another 500 simulations but this time shuffle the
-<code>gender</code> variable instead of the <code>survival</code>
-variable.
+<li><span class="blue">Carry out another 500 simulations but this time
+shuffle the <code>gender</code> variable instead of the
+<code>survival</code> variable. </span>
 <ul>
 <li>Include the code <code>set.seed(1)</code> before your 500
 simulations to make your answer reproducible.</li>
 </ul></li>
 <li><strong>Does shuffling the <code>gender</code> variable instead of
-the <code>survival</code> variable change your answer to the question
-<em>Does <code>gender</code> play a role in whether or not a character
-will survive in a horror film?</em></strong>
+the <code>survival</code> variable change your answer to the
+question?</strong></li>
+<li><strong>Does <code>gender</code> play a role in whether or not a
+character will survive in a horror film?</strong>
 <ul>
 <li><strong>Why or why not?</strong></li>
 </ul></li>

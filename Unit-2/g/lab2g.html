@@ -543,10 +543,12 @@ information from a separate data set.</li>
 <li>In this lab, we will learn how to merge information from our
 <em>personality color</em> data with our <em>stress/chill</em>
 data.</li>
-<li><em>Export, upload, import</em> your <em>Personality Color</em> data
-set and name it <code>colors</code>.</li>
-<li>Then, <em>export, upload, import</em> your <em>Stress/Chill</em>
-data set and name it <code>stress</code>.</li>
+<li><span class="blue"><em>Export, upload, import</em> your
+<em>Personality Color</em> data set and name it
+<code>colors</code>.</span></li>
+<li><span class="blue">Then, <em>export, upload, import</em> your
+<em>Stress/Chill</em> data set and name it
+<code>stress</code>.</span></li>
 </ul>
 </div>
 <div id="looking-at-stresschill" class="slide section level2">
@@ -626,12 +628,13 @@ to.</li>
 <ul>
 <li>Our goal is to add the variables from the <code>colors</code> data
 onto the <code>stress</code> data.</li>
-<li>Start by ensuring that every <code>user.id</code> in the
-<code>colors</code> data is unique.
+<li><span class="blue">Start by ensuring that every <code>user.id</code>
+in the <code>colors</code> data is unique.
 <ul>
 <li>If there’s a duplicate, have your teacher remove the duplicate from
 your class’ Web Response Manager and then re-<em>export</em>,
-<em>upload</em>, <em>import</em> your <code>colors</code> data.</li>
+<em>upload</em>, <em>import</em> your <code>colors</code>
+data.</span></li>
 </ul></li>
 <li><strong>After we add the data from <em>colors</em> to
 <em>stress</em>, how many rows should our merged data have? Write this
@@ -643,13 +646,14 @@ number down.</strong></li>
 <ul>
 <li>We can use the <code>merge</code> function to <em>join</em> our data
 sets together using the variables that appear in both sets.</li>
-<li><strong>Fill in the blanks below to join the information from the
-<code>colors</code> data onto the <code>stress</code>.</strong></li>
+<li><span class="blue">Fill in the blanks below to join the information
+from the <code>colors</code> data onto the
+<code>stress</code>.</span></li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">merge</span>(____, ____, <span class="at">by =</span> <span class="st">&quot;____&quot;</span>)</span></code></pre></div>
 <ul>
-<li><code>Assign</code> this <code>merged</code> data set the name
-<code>stress_colors</code>.
+<li><span class="blue"><code>Assign</code> this <code>merged</code> data
+set the name <code>stress_colors</code>.</span>
 <ul>
 <li>Make sure your data has the same number of observations that you
 wrote down on the previous slide.</li>
@@ -659,18 +663,18 @@ wrote down on the previous slide.</li>
 <div id="saving-your-data" class="slide section level2">
 <h1>Saving your data:</h1>
 <ul>
-<li><code>View</code> your merged data and make sure nothing appears to
-be blatantly wrong with it.</li>
+<li><span class="blue"><code>View</code> your merged data and make sure
+nothing appears to be blatantly wrong with it.</span></li>
 <li><strong>Why didn’t we stack the rows of data instead?</strong></li>
 <li><strong>What happens if you swap the order of the data sets in the
 <code>merge</code> function?</strong></li>
-<li>Fill in the blank below to <code>save</code> our
-<code>stress_color</code> data for later use.</li>
+<li><span class="blue">Fill in the blank below to <code>save</code> our
+<code>stress_color</code> data for later use.</span></li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(stress_colors, <span class="at">file =</span> <span class="st">&quot;stress_colors.Rda&quot;</span>)</span></code></pre></div>
 <ul>
-<li>Be sure to look in the <em>Files</em> tab to make sure your data was
-saved.</li>
+<li><span class="blue">Be sure to look in the <em>Files</em> tab to make
+sure your data was saved.</span></li>
 </ul>
 </div>
 <div id="moving-on" class="slide section level2">
@@ -678,14 +682,12 @@ saved.</li>
 <ul>
 <li>In the next practicum, we’ll begin analyzing our merged data. In the
 meantime:</li>
-<li><strong>Make a few plots using variables from the
+<li><span class="blue">Make a few plots using variables from the
 <code>stress</code> data and <em>facet</em> or <em>group</em> the plots
-based on variables from the <code>colors</code> data.</strong>
-<ul>
+based on variables from the <code>colors</code> data.</span></li>
 <li><strong>Write down the most interesting discovery you make by just
 exploring your data. Write out how you found your discovery and
 interpret what it means for the people in your class.</strong></li>
-</ul></li>
 <li><strong>With our <em>colors</em> data, we could answer questions
 about the <em>typical</em> color scores in your class. Why can we no
 longer answer this question in our <code>stress_color</code>

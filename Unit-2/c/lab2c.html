@@ -623,8 +623,8 @@ need to simulate that playlist in <code>R</code>.</li>
 <ul>
 <li>Look in the <code>Environment</code> pane for the vector containing
 your rap songs.</li>
-<li><strong>Use a similar line of code to simulate the rock songs in our
-playlist of 100.</strong></li>
+<li><span class="blue">Use a similar line of code to simulate the rock
+songs in our playlist of 100.</span></li>
 </ul>
 </div>
 <div id="put-the-songs-in-the-playlist" class="slide section level2">
@@ -636,14 +636,15 @@ together.
 <li>To do this, we can use the combine function <code>c()</code> in
 <code>R</code>.</li>
 </ul></li>
-<li>Fill in the blanks to combine your different songs:</li>
+<li><span class="blue">Fill in the blanks to combine your different
+songs:</span></li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>songs <span class="ot">&lt;-</span> <span class="fu">__</span>(rap, ____)</span></code></pre></div>
 <ul>
 <li>And with that, our playlist of songs should be ready to go.
 <ul>
-<li>Type <code>songs</code> into the console and hit enter to see your
-individual <em>songs</em>.</li>
+<li><span class="blue">Type <code>songs</code> into the console and hit
+enter to see your individual <em>songs</em>.</span></li>
 </ul></li>
 </ul>
 </div>
@@ -658,10 +659,11 @@ individual <em>songs</em>.</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(songs, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <ul>
-<li>Run this code 10 times and compute the <em>proportion</em> of
-<code>&quot;rap&quot;</code> songs you drew from the 10.
+<li><span class="blue">Run this code 10 times and compute the
+<em>proportion</em> of <code>&quot;rap&quot;</code> songs you drew from the
+10.</span>
 <ul>
-<li>Vocabulary Check: A <em>proportion</em> is a fraction of the whole.
+<li>Vocabulary Check: A <b>proportion</b> is a fraction of the whole.
 <ul>
 <li>For example, if 2 rap songs were drawn from the 10, the
 <em>proportion</em> would be 2/10</li>
@@ -683,24 +685,25 @@ percentage, 20%</li>
 <li>Instead of running the same line of code multiple times ourselves we
 can use <code>R</code> to <code>do()</code> multiple repetitions for us.
 <ul>
-<li>Fill in the blanks below to <code>do</code> the <code>sample</code>
-code from the previous slide <em>50</em> times:</li>
+<li><span class="blue">Fill in the blanks below to <code>do</code> the
+<code>sample</code> code from the previous slide <em>50</em>
+times:</span></li>
 </ul></li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">do</span>(___) <span class="sc">*</span> <span class="fu">sample</span>(___, <span class="at">___ =</span> ___, <span class="at">___ =</span> ___)</span></code></pre></div>
 <ul>
 <li><p>Recall that we need to store our results to be able to perform
 analysis.</p></li>
-<li><p><em>Assign</em> the 50 selected songs the name <code>draws</code>
-and then <code>View</code> your file.</p></li>
+<li><p><span class="blue"><em>Assign</em> the 50 selected songs the name
+<code>draws</code> and then <code>View</code> your file.</span></p></li>
 <li><p><strong>What is the variable name?</strong></p>
 <ul>
 <li><code>R</code> defaulted to naming the variable based on the
 function used. You may use the data cleaning skills you learned in lab 6
 to <code>rename</code> the variable if you wish.</li>
 </ul></li>
-<li><p>Fill in the blank below to tally how often each genre was
-selected:</p></li>
+<li><p><span class="blue">Fill in the blank below to tally how often
+each genre was selected:</span></p></li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(<span class="sc">~</span>___, <span class="at">data =</span> draws)</span></code></pre></div>
 <ul>
@@ -754,18 +757,19 @@ occur for everyone.
 <div id="playing-with-seeds" class="slide section level2">
 <h1>Playing with seeds</h1>
 <ul>
-<li>With a partner, choose a number to include in <code>set.seed</code>
-then redo the simulation of 50 songs.
+<li><span class="blue">With a partner, choose a number to include in
+<code>set.seed</code> then redo the simulation of 50 songs. </span>
 <ul>
 <li>Both partners should run <code>set.seed(___)</code> just before
 simulating the 50 draws.</li>
 <li>The blank in <code>set.seed(___)</code> should be the same number
 for both partners.</li>
-<li>Verify that both partners compute the same proportion of
-<code>&quot;rap&quot;</code> songs.</li>
+<li><strong>Verify that both partners compute the same proportion of
+<code>&quot;rap&quot;</code> songs.</strong></li>
 </ul></li>
-<li>Redo the 50 simulations one last time but have each partner choose a
-different number for <code>set.seed(___)</code>.
+<li><span class="blue">Redo the 50 simulations one last time but have
+each partner choose a different number for <code>set.seed(___)</code>.
+</span>
 <ul>
 <li><strong>Are the proportions still the same? If so, can you find two
 different values for <code>set.seed</code> that give different
@@ -784,15 +788,15 @@ home.</li>
 this student is one of the one’s who went to the movies last
 Friday?</em></p>
 <ul>
-<li><strong>Answer this by estimating the probability that a randomly
-chosen student went to the movies using 500 simulations.</strong>
+<li><span class="blue">Answer this by estimating the probability that a
+randomly chosen student went to the movies using 500 simulations.</span>
 <ul>
 <li><strong>Write down both the estimated probability and the code you
 used to compute your estimate. You might find it helpful to write your
 answer in an R Script <em>(File -&gt; New File -&gt; R
 Script)</em></strong></li>
-<li><strong>Include <code>set.seed(123)</code> in your code before you
-<code>do</code> 500 repeated samples.</strong></li>
+<li><span class="blue">Include <code>set.seed(123)</code> in your code
+before you <code>do</code> 500 repeated samples.</span></li>
 </ul></li>
 </ul>
 </div>

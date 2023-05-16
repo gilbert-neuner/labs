@@ -557,8 +557,8 @@ it <code>colors</code>.</li>
 <code>max</code> or <code>range</code> functions. These functions use a
 similar syntax as the <code>mean</code> function.</li>
 </ul></li>
-<li><strong>Find the <code>min</code> value and <code>max</code> value
-for your predominant color.</strong></li>
+<li><strong>Find and write down the <code>min</code> value and
+<code>max</code> value for your predominant color.</strong></li>
 <li><strong>Apply the <code>range</code> function to your predominant
 color and describe the output.</strong>
 <ul>
@@ -575,7 +575,7 @@ function that will calculate the difference.</li>
 <div id="quartiles-q1-q3" class="slide section level2">
 <h1>Quartiles (Q1 &amp; Q3)</h1>
 <ul>
-<li>The <em>median</em> of our data is the value that splits our data in
+<li>The <b>median</b> of our data is the value that splits our data in
 half.
 <ul>
 <li>Half of our data is smaller than the <em>median</em>, half is
@@ -590,20 +590,22 @@ predominant color.</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(<span class="sc">~</span>____, <span class="at">data =</span> ____, <span class="at">p =</span> <span class="fl">0.25</span>)</span></code></pre></div>
 <ul>
-<li><strong>Use a similar line of code to calculate <em>Q3</em>, which
-is the value that’s larger than 75% of our data.</strong></li>
+<li><strong>Use a similar line of code to calculate and write down
+<em>Q3</em>, which is the value that’s larger than 75% of our
+data.</strong></li>
 </ul>
 </div>
 <div id="the-inter-quartile-range-iqr" class="slide section level2">
 <h1>The Inter-Quartile-Range (IQR)</h1>
 <ul>
-<li>Make a <code>dotPlot</code> of your <em>predominant</em> color’s
-scores. Make sure to include the <code>nint</code> option.</li>
+<li><span class="blue">Make a <code>dotPlot</code> of your
+<em>predominant</em> color’s scores. Make sure to include the
+<code>nint</code> option.</span></li>
 <li>Visually (Don’t worry about being super-precise):
 <ul>
-<li>Cut the distribution into quarters so the <em>number</em> of
-<em>data points</em> is equal for each piece. (Each piece should contain
-25% of the data.)
+<li><span class="blue">Cut the distribution into quarters so the
+<em>number</em> of <em>data points</em> is equal for each piece. (Each
+piece should contain 25% of the data.)</span>
 <ul>
 <li>Hint: You might consider using the <code>add_line(vline =  )</code>
 to add vertical lines at the quarter marks.</li>
@@ -612,7 +614,7 @@ to add vertical lines at the quarter marks.</li>
 pieces.</strong></li>
 <li><strong>How long is the interval of the middle two
 pieces?</strong></li>
-<li>This length is the <em>IQR</em>.</li>
+<li>This length is the <b>IQR</b>.</li>
 </ul></li>
 </ul>
 </div>
@@ -631,8 +633,8 @@ compute the <code>range</code>, we can also use the <em>1st</em> and
 previously for your predominant color and find the <em>IQR</em> by
 hand</strong>.
 <ul>
-<li><strong>Then use the <code>iqr()</code> function to calculate it for
-you.</strong></li>
+<li><span class="blue">Then use the <code>iqr()</code> function to
+calculate it for you.</span></li>
 </ul></li>
 <li><strong>Which personality color score has the widest spread
 according to the <em>IQR</em>? Which is narrowest?</strong></li>
@@ -642,8 +644,8 @@ according to the <em>IQR</em>? Which is narrowest?</strong></li>
 <h1>Boxplots</h1>
 <ul>
 <li>By using the medians, quartiles, and min/max, we can construct a new
-single variable plot called the <em>box and whisker</em> plot, often
-shortened to just <em>boxplot</em>.</li>
+single variable plot called the <b>box and whisker</b> plot, often
+shortened to just <b>boxplot</b>.</li>
 <li><strong>By showing someone a <code>dotPlot</code>, how would you
 teach them to make a <em>boxplot</em>? Write out your explanation in a
 series of steps for the person to use.</strong>
@@ -651,8 +653,8 @@ series of steps for the person to use.</strong>
 <li><strong>Use the steps you write to create a sketch of a
 <em>boxplot</em> for your predominant color’s scores in your
 journal.</strong></li>
-<li><strong>Then use the <code>bwplot</code> function to create a
-<em>boxplot</em> using <code>R</code>.</strong></li>
+<li><span class="blue">Then use the <code>bwplot</code> function to
+create a <em>boxplot</em> using <code>R</code>.</span></li>
 </ul></li>
 </ul>
 </div>
@@ -664,8 +666,9 @@ journal.</strong></li>
 <ul>
 <li>Computing lots of different summaries can be tedious.</li>
 </ul></li>
-<li>Fill in the blanks below to compute some of our <em>favorite</em>
-summaries for your predominant color all at once.</li>
+<li><span class="blue">Fill in the blanks below to compute some of our
+<em>favorite</em> summaries for your predominant color all at
+once.</span></li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(<span class="sc">~</span>____, <span class="at">data=</span>colors)</span></code></pre></div>
 </div>
@@ -691,8 +694,8 @@ function needs to be a vector containig two numeric values.</li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(values)</span></code></pre></div>
 <ul>
-<li><strong>Use these two steps to calculate the <em>range</em> of your
-predominant color.</strong></li>
+<li><strong>Use these two steps to calculate and write down the
+<em>range</em> of your predominant color.</strong></li>
 </ul>
 </div>
 <div id="introducing-custom-functions" class="slide section level2">
@@ -727,8 +730,8 @@ of a <code>variable</code> in our <code>data</code>.</li>
 <li>Each of the <em>generic</em> arguments is used inside the
 <code>mean</code> and <code>median</code> functions.</li>
 </ul></li>
-<li>Copy and paste the code above into a <em>R script</em> and
-<em>run</em> it.</li>
+<li><span class="blue">Copy and paste the code above into a <em>R
+script</em> and <em>run</em> it. </span></li>
 <li>The <code>mm_diff</code> function will appear in your
 <em>Environment</em> pane.</li>
 </ul>
@@ -739,9 +742,9 @@ of a <code>variable</code> in our <code>data</code>.</li>
 <li>After running the code used to create the function, we can use it
 just like we would any other numerical summary.
 <ul>
-<li>In the <em>console</em>, fill in the blanks below to calculate the
-absolute difference between the <code>mean</code> and
-<code>median</code> values of your predominant color:</li>
+<li><span class="blue">In the <em>console</em>, fill in the blanks below
+to calculate the absolute difference between the <code>mean</code> and
+<code>median</code> values of your predominant color:</span></li>
 </ul></li>
 </ul>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">____</span>(<span class="sc">~</span>____, <span class="at">data =</span> ____)</span></code></pre></div>
@@ -759,9 +762,10 @@ color, make an argument why either the <code>mean</code> or
 <div id="our-first-function" class="slide section level2">
 <h1>Our first function</h1>
 <ul>
-<li>Using the previous example as a guide, create a function called
-<code>Range</code> (<em>Note the capital ‘R’</em>) that calculates the
-<em>range</em> of a variable by filling in the blanks below:</li>
+<li><span class="blue">Using the previous example as a guide, create a
+function called <code>Range</code> (note the capital ‘R’) that
+calculates the <em>range</em> of a variable by filling in the blanks
+below:</span></li>
 </ul>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>____ <span class="ot">&lt;-</span> <span class="cf">function</span> (____, ____) {</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  values <span class="ot">&lt;-</span> <span class="fu">range</span>(____, <span class="at">data =</span> ____)</span>
@@ -776,9 +780,9 @@ color with the largest difference between the <code>max</code> and
 <div id="on-your-own" class="slide section level2">
 <h1>On your own</h1>
 <ul>
-<li><strong>Create a function called <code>myIQR</code> that uses the
-<code>quantile</code> function to compute the middle 30% of the
-data.</strong></li>
+<li><span class="blue">Create a function called <code>myIQR</code> that
+uses the <code>quantile</code> function to compute the middle 30% of the
+data.</span></li>
 </ul>
 </div>
 

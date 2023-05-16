@@ -23,7 +23,7 @@ library(mobilizr)
 
 ## What's normal?
 
-- The _normal distribution_ is a curve we often see in real data.
+- The <b>normal distribution</b> is a curve we often see in real data.
     - We see it in people's blood pressures and in measurement errors.
 - When data appears to be _normally distributed_, we can use the _normal model_ to:
   - Simulate _normally distributed_ data.
@@ -36,7 +36,7 @@ library(mobilizr)
 - The normal distribution is _symmetric about the mean_:
     - The `mean` is found in the very center of the distribution.
     - And the curve looks the same to the left of the mean as it does on the right.
-- Use the following to draw a normal distribution:
+- <span class="blue">Use the following to draw a normal distribution:</span>
 ```{r, eval = FALSE, echo = TRUE}
 plotDist('norm', mean = 0, sd = 1)
 ```
@@ -46,7 +46,7 @@ plotDist('norm', mean = 0, sd = 1)
 
 - To draw a normal curve, we need to know exactly 2 things:
     - The `mean` and `sd`.
-- The `sd`, or _standard deviation_, is a measure of spread that's similar to the `MAD`.
+- The `sd`, or <b>standard deviation</b>, is a measure of spread that's similar to the `MAD`.
 - **Which part of the normal curve changes when the value of the `mean` changes?**
 - **Which part of the normal curve changes when the value of the `sd` changes?**
 - _Hint_: Try changing the `mean` and `sd` values in the `plotDist` function.
@@ -54,7 +54,7 @@ plotDist('norm', mean = 0, sd = 1)
 
 ## Finding normal distributions
 
-- Load the `cdc` data and use the `histogram` function to answer the following:
+- <span class="blue">Load the `cdc` data and use the `histogram` function to answer the following:</span>
 - **Think about the `height` and `weight` variables. Based on what you know about these variables, which of the variables do you think have distributions that will look like the normal distribution?**
     - **Make histograms of these variables.  Which ones look like the normal distribution?**
     - _Hint_: To help answer this question, try including the option `fit = "normal"` in the histogram function. You might also try faceting by `gender`.
@@ -73,9 +73,9 @@ plotDist('norm', mean = 0, sd = 1)
 
 
 - **For each of the following, determine which, if any, appear to be normally distributed. Explain your reasoning:**
-- Hint: Refer to Lab 2E and 2F
     - **The difference in `percentages` between male and female survivors in a slasher film for 500 random shuffles.**
     - **The difference in `median` fares between survivors and non-survivors on the Titanic for 500 random shuffles.**
     - **The difference in `mean` fares between survivors and non-survivors on the Titanic for 500 random shuffles.**
+- Hint: Refer to Lab 2E and 2F.
 
 

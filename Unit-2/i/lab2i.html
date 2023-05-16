@@ -553,18 +553,20 @@ functions to:
 <div id="get-set-up" class="slide section level2">
 <h1>Get set up</h1>
 <ul>
-<li>Start by loading the <code>titanic</code> data and calculate the
-<code>mean</code> <code>age</code> of people in the data but
-<code>shuffle</code> their <code>survival</code> status 500 times.
+<li><span class="blue">Start by loading the <code>titanic</code> data
+and calculate the <code>mean</code> <code>age</code> of people in the
+data but <code>shuffle</code> their <code>survival</code> status 500
+times.</span>
 <ul>
 <li><code>Assign</code> this data the name <code>shfls</code>.</li>
 </ul></li>
-<li>After creating <code>shfls</code>, use <code>mutate</code> to add a
-new variable to the data set. This new variable should have the name
-<code>diff</code> and should be the <code>mean</code> <code>age</code>
-of those who survived minus those who died.</li>
-<li>Finally, calculate the <code>mean</code> and <code>sd</code> of the
-<code>diff</code> variable.
+<li><span class="blue">After creating <code>shfls</code>, use
+<code>mutate</code> to add a new variable to the data set. This new
+variable should have the name <code>diff</code> and should be the
+<code>mean</code> <code>age</code> of those who survived minus those who
+died.</span></li>
+<li><span class="blue">Finally, calculate the <code>mean</code> and
+<code>sd</code> of the <code>diff</code> variable.</span>
 <ul>
 <li><code>Assign</code> these values the name <code>diff_mean</code> and
 <code>diff_sd</code>.</li>
@@ -580,7 +582,7 @@ variable looks approximately normally distributed.
 <li><strong>Is the distribution close to normal? Explain how you
 determined this. Describe the center and spread of the
 distribution.</strong></li>
-<li><strong>Compute the mean difference in the age of the
+<li><strong>Compute and write down the mean difference in the age of the
 <em>actual</em> survivors and the actual non-survivors.</strong></li>
 </ul></li>
 </ul>
@@ -591,17 +593,15 @@ distribution.</strong></li>
 <li><p>Since the distribution of our <code>diff</code> variable appears
 normally distributed, we can use a normal model to estimate the
 probability of seeing differences that are more extreme than our actual
-data.</p>
-<ul>
-<li><strong>Draw a sketch of a normal curve. Label the mean age
+data.</p></li>
+<li><p><strong>Draw a sketch of a normal curve. Label the mean age
 difference, based on your shuffles, and the actual age difference of
 survivors minus non-survivors from the actual data. Then shade in the
 areas, under normal the curve, that are <em>smaller</em> than the actual
-difference.</strong></li>
-</ul></li>
-<li><p>Fill in the blanks to calculate the probability of an even
-smaller difference occurring than our actual difference using a normal
-model.</p></li>
+difference.</strong></p></li>
+<li><p><span class="blue">Fill in the blanks to calculate the
+probability of an even smaller difference occurring than our actual
+difference using a normal model.</span></p></li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(____, <span class="at">mean =</span> diff_mean, <span class="at">sd =</span> ____)</span></code></pre></div>
 </div>
@@ -611,9 +611,9 @@ model.</p></li>
 <li><p>The probability you calculated in the previous slide is an
 estimate for how often we expect to see a difference smaller than the
 actual one we observed, by chance alone.</p></li>
-<li><p>If you wanted to instead calculate the probability that the
-difference would be larger than the one observed, we could run (fill in
-the blanks):</p></li>
+<li><p><span class="blue">If you wanted to instead calculate the
+probability that the difference would be larger than the one observed,
+we could run (fill in the blanks):</span></p></li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(____, <span class="at">mean =</span> diff_mean, <span class="at">sd =</span> ____)</span></code></pre></div>
 </div>
@@ -621,16 +621,17 @@ the blanks):</p></li>
 <h1>Simulating normal draws</h1>
 <ul>
 <li>We can simulate random draws from a normal distribution with the
-<code>rnorm</code> function.
-<ul>
-<li>Fill in the blanks in the following two lines of code to simulate
-100 heights of randomly chosen men. Assume the <code>mean</code> height
-is 67 inches and the <code>standard deviation</code> is 3 inches.<br />
-</li>
-<li>Plot your simulated heights with a <code>histogram</code>.</li>
-</ul></li>
+<code>rnorm</code> function.</li>
+<li><span class="blue">Fill in the blanks in the following two lines of
+code to simulate 100 heights of randomly chosen men. Assume the
+<code>mean</code> height is 67 inches and the
+<code>standard deviation</code> is 3 inches. </span></li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>draws <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(____, <span class="at">mean =</span> ____, <span class="at">sd =</span> ____)</span></code></pre></div>
+<ul>
+<li><span class="blue">Plot your simulated heights with a
+<code>histogram</code>.</span></li>
+</ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(draws, <span class="at">fit =</span> ____)</span></code></pre></div>
 </div>
 <div id="ps-and-qs" class="slide section level2">
@@ -646,8 +647,9 @@ is 67 inches and the <code>standard deviation</code> is 3 inches.<br />
 <ul>
 <li>Hence why we’ll call this a “Q” norm.</li>
 </ul></li>
-<li>How tall can a man be and still be in the shortest 25% of heights if
-the mean height is 67 inches with a standard deviation of 3 inches?</li>
+<li><strong>How tall can a man be and still be in the shortest 25% of
+heights if the mean height is 67 inches with a standard deviation of 3
+inches?</strong></li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(____, <span class="at">mean =</span> ____, <span class="at">sd =</span> ____)</span></code></pre></div>
 </div>
@@ -655,14 +657,14 @@ the mean height is 67 inches with a standard deviation of 3 inches?</li>
 <h1>On your own</h1>
 <p>Conduct one of the statistical investigations below:</p>
 <ul>
-<li>Using the <code>titanic</code> data
+<li>Using the <code>titanic</code> data:
 <ul>
 <li><strong>Were women on the Titanic typically younger than
 men?</strong></li>
 <li><strong>Use a histogram, 500 random shuffles and a normal model to
 answer the question in the bullet above.</strong></li>
 </ul></li>
-<li>Using the <code>cdc</code> data
+<li>Using the <code>cdc</code> data:
 <ul>
 <li><strong>Using 500 random shuffles and a normal model, how much
 taller would the typical male have to be than the typical female in
