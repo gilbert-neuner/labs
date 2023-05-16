@@ -1,11 +1,16 @@
 ---
 title: "R's Normal Distribution Alphabet"
 author: "Lab 2I"
-date: "Directions: Follow along with the slides and answer the questions in **red** font in your journal."
-output: 
-  slidy_presentation: 
+date: 'Directions: Follow along with the slides, completing the questions in <font color=#25679E><b>blue</b></font> on your computer, and answering the questions in **red** in your journal.  
+  
+  
+  Space, Click, Right Arrow or swipe left to move to the next slide.'
+output:
+  slidy_presentation:
     css: ../../IDSLabCSSRev.css
     mathjax: ../../extras/mathjax-local/MathJax.js
+  word_document:
+  ioslides_presentation: default
 ---
 
 ```{r, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
