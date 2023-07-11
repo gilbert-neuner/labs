@@ -41,8 +41,8 @@ library(mobilizr)
 ## Predicting heights knowing arm spans
 
 - <span class="blue">Create two subsets of our `arm_span` data: 
-    - One for `armspan >= 61 & armspan <= 63`. 
-    - A second for `armspan >= 64 & armspan <= 66`.</span>
+    - One for `armspan >= 61` and `armspan <= 63`. 
+    - A second for `armspan >= 64` and `armspan <= 66`.</span>
 - <span class="blue">Create a histogram for the `height` of people in each subset.</span>
 - **Answer the following based on the data:**
     - **What `height` would you predict if you knew a person had an `armspan` around 62 inches?**
