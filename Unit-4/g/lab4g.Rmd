@@ -66,12 +66,25 @@ library(mobilizr)
 - <span class="blue">Using the same variables that you used in `tree2`, create a model named `tree3` but include `cp = 0.005` and `minsplit = 10` as arguments.</span>
     - **How is `tree3` different from `tree2`?**
 
+## Predictions and Cross-validation
+
+- Just like with _linear models_, we can use cross-validation to measure how well our _classification trees_ perform on unseen data.
+- First, we need to compute the predictions that our model makes on test data.
+    - <span class="blue">Use the `data` function to load the `titanic_test` data.</span>
+    - <span class="blue">Fill in the blanks below to predict whether people in the `titanic_test` data survived or not using `tree1`.</span>
+    - Note: the argument `type = "class"` tells the `predict` function that we are classifying a categorical variable instead of regressing a numerical variable.
+
+```{r, eval = FALSE, echo = TRUE}
+titanic_test <- mutate(____, prediction = predict(____, newdata = ____, type = "class"))
+```
 
 ## Misclassification rate
 
+- Now that we have predictions on the test data, we need a way to measure the accuracy of those predictions.
 - Similar to how we use the _mean squared error_ to describe how well our model predicts numerical variables, we use the _misclassification rate_ to describe how our model predicts categorical variables.
     - The _misclassification rate_ (MCR) is the number of people who were predicted to be in one category but were actually in another.
     - <span class="blue">Fill in the blanks to create a function to calculate the MCR.</span>
+    - Note: The operator `!=` checks if the left hand side and right hand side are _not_ equal. It is the opposite of `==`.
 
 ```{r, eval = FALSE, echo = TRUE}
 calc_mcr <- function(actual, predicted) {
@@ -79,23 +92,11 @@ calc_mcr <- function(actual, predicted) {
 }
 ```
 
-
-## Predictions and Cross-validation
-
-- Just like with _linear models_, we can use cross-validation to measure our _classification trees_ prediction accuracy.
-    - <span class="blue">Use the `data` function to load the `titanic_test` data.</span>
-    - <span class="blue">Fill in the blanks below to predict whether people in the `titanic_test` data survived or not using `tree1`.</span>
-
-```{r, eval = FALSE, echo = TRUE}
-titanic_test <- mutate(____, prediction = predict(____, newdata = ____, type = "class"))
-```
-
 - <span class="blue">Then run the following to calculate the MCR.</span>
 
 ```{r, eval = FALSE, echo = TRUE}
 summarize(titanic_test, mcr = calc_mcr(survived, prediction))
 ```
-
 
 ## On your own
 

@@ -637,9 +637,32 @@ arguments.</span>
 </ul></li>
 </ul>
 </div>
+<div id="predictions-and-cross-validation" class="slide section level2">
+<h1>Predictions and Cross-validation</h1>
+<ul>
+<li>Just like with <em>linear models</em>, we can use cross-validation
+to measure how well our <em>classification trees</em> perform on unseen
+data.</li>
+<li>First, we need to compute the predictions that our model makes on
+test data.
+<ul>
+<li><span class="blue">Use the <code>data</code> function to load the
+<code>titanic_test</code> data.</span></li>
+<li><span class="blue">Fill in the blanks below to predict whether
+people in the <code>titanic_test</code> data survived or not using
+<code>tree1</code>.</span></li>
+<li>Note: the argument <code>type = &quot;class&quot;</code> tells the
+<code>predict</code> function that we are classifying a categorical
+variable instead of regressing a numerical variable.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>titanic_test <span class="ot">&lt;-</span> <span class="fu">mutate</span>(____, <span class="at">prediction =</span> <span class="fu">predict</span>(____, <span class="at">newdata =</span> ____, <span class="at">type =</span> <span class="st">&quot;class&quot;</span>))</span></code></pre></div>
+</div>
 <div id="misclassification-rate" class="slide section level2">
 <h1>Misclassification rate</h1>
 <ul>
+<li>Now that we have predictions on the test data, we need a way to
+measure the accuracy of those predictions.</li>
 <li>Similar to how we use the <em>mean squared error</em> to describe
 how well our model predicts numerical variables, we use the
 <em>misclassification rate</em> to describe how our model predicts
@@ -650,26 +673,14 @@ who were predicted to be in one category but were actually in
 another.</li>
 <li><span class="blue">Fill in the blanks to create a function to
 calculate the MCR.</span></li>
+<li>Note: The operator <code>!=</code> checks if the left hand side and
+right hand side are <em>not</em> equal. It is the opposite of
+<code>==</code>.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>calc_mcr <span class="ot">&lt;-</span> <span class="cf">function</span>(actual, predicted) {</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>  <span class="fu">sum</span>(____ <span class="sc">!=</span> ____) <span class="sc">/</span> <span class="fu">length</span>(____)</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>}</span></code></pre></div>
-</div>
-<div id="predictions-and-cross-validation" class="slide section level2">
-<h1>Predictions and Cross-validation</h1>
-<ul>
-<li>Just like with <em>linear models</em>, we can use cross-validation
-to measure our <em>classification trees</em> prediction accuracy.
-<ul>
-<li><span class="blue">Use the <code>data</code> function to load the
-<code>titanic_test</code> data.</span></li>
-<li><span class="blue">Fill in the blanks below to predict whether
-people in the <code>titanic_test</code> data survived or not using
-<code>tree1</code>.</span></li>
-</ul></li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>titanic_test <span class="ot">&lt;-</span> <span class="fu">mutate</span>(____, <span class="at">prediction =</span> <span class="fu">predict</span>(____, <span class="at">newdata =</span> ____, <span class="at">type =</span> <span class="st">&quot;class&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>calc_mcr <span class="ot">&lt;-</span> <span class="cf">function</span>(actual, predicted) {</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  <span class="fu">sum</span>(____ <span class="sc">!=</span> ____) <span class="sc">/</span> <span class="fu">length</span>(____)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li><span class="blue">Then run the following to calculate the
 MCR.</span></li>
