@@ -86,7 +86,7 @@ titanic_test <- mutate(____, prediction = predict(____, newdata = ____, type = "
 - <span class="blue">Fill in the blanks below to create a table for the actual results vs. the predictions of `tree1` on `titanic_test`.</span>
 
 ```{r, eval = FALSE, echo = TRUE}
-tally(___ ~ ___, data = ___)
+tally(survived ~ ___, data = ___)
 ```
 
 - Note: Tables with actual outcomes vs. predicted outcomes are called _confusion matrices_. They are called such because they tell us when our model _confuses_ one class for another.
