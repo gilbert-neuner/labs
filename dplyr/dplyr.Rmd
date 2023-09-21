@@ -44,7 +44,7 @@ vignette("dplyr")
 
 <li>One of the most important elements of `dplyr` is the **pipe** (`%>%`). The pipe makes long sequences of nested functions much more readable.</li> 
 
-<li>Let's see how the pipe works on the next slide.</li>
+<li>Let's see how the pipe works on the next slide, using non-`dplyr` functions.</li>
 
 </ul>
 
@@ -52,30 +52,70 @@ vignette("dplyr")
 
 <ul>
 
-<li>Suppose that for some reason, we are interested in finding the square root of the absolute value of the cosine of the number 2.</li>
+<li>Suppose that for some reason, we are interested in finding the cosine of the base 3 logarithm of the square root of the number 2.</li>
 
 <li>One way to compute this value is the following line of code:</li>
 
-```{r}
-sqrt(abs(cos(2)))
+```{r, eval = FALSE}
+cos(log(sqrt(2), base = 3))
 ```
 
 <li>To see the order in which functions are performed on the number 2, you have to read from inside to outside.</li>
 
 <li>Using the pipe, we could instead write</li>
 
-```{r}
+```{r, eval = FALSE}
 2 %>% 
-  cos() %>%
-  abs() %>%
-  sqrt()
+  sqrt() %>%
+  log(base = 3) %>%
+  cos()
 ```
+
+<li>**Verify that these two snippets evaluate to the same output.**</li>
 
 <li>The pipe takes the object on the left side and makes it the first argument of the function on the right side. Chaining pipes together allows you to read the order in which functions are performed from left to right.</li>
 
-<li>Notice how there is a new line after every pipe. This is not strictly necessary, but it is common practice and makes the code more readable.</li>
+<li>Notice how there is a new line after every pipe. This is not necessary, but it is common practice and makes the code more readable.</li>
 
-<li>**Which snippet is more readable?**</li>
+<li>**Which snippet do you think is more readable?**</li>
+
+</ul>
+
+## The dplyr verbs in action
+
+<ul>
+
+<li>In the next few slides, we will see some examples of the `dplyr` verbs used to manipulate the `cdc` dataset.</li>
+
+<li>**Run the following code to familiarize yourself with the `cdc` dataset:**</li>
+
+```{r, eval = FALSE}
+View(cdc)
+```
+
+<li>In the next few slides, note the following:</li>
+
+  <ul>
+  
+  <li>The pipe is always used to nest functions, for readability purposes.</li>
+  
+  <li>The `dplyr` verbs take data frames as input, modify them, and give data frames as output.</li>
+  
+  </ul>
+
+<li>In the next few slides, the code snippets contain comments which describe what the output should look like. **As an exercise, run the code snippets yourself and verify that the comments are correct.**</li>
+
+  <ul>
+  
+  <li>Hint: to `View` the manipulated data frame, you can assign the output to a variable name, such as `df`, and then `View` the dataframe. For example:</li>
+  
+```{r, eval = FALSE}
+df <- cdc %>%
+  select(height, weight)
+View(df)
+```
+
+  </ul>
 
 </ul>
 
@@ -83,39 +123,36 @@ sqrt(abs(cos(2)))
 
 <ul>
 
-<li>`select` is used to subset columns (head is used to print only the first 6 rows).</li>
+<li>`select` is used to subset columns.</li>
 
-```{r}
-cdc %>%
-  select(height, weight) %>%
-  head()
+```{r, eval = FALSE}
+# the only remaining columns are height and weight
+df <- cdc %>%
+  select(height, weight)
 ```
 
 <li>To select a range of consecutive variables, use a colon (:).</li>
 
-```{r}
+```{r, eval = FALSE}
+# the only remaining columns are those between race and seat_belt
 cdc %>%
-  select(race:seat_belt) %>%
-  head()
+  select(race:seat_belt)
 ```
 
 <li>To take the complement of a set of variables, use an exclamation mark (!).</li>
 
-```{r}
-# The outermost function called is names, to get the variable names of the new data frame
-# Notice that height is not present in the list of names
+```{r, eval = FALSE}
+# all columns remain except for height
 cdc %>%
-  select(!height) %>%
-  names()
+  select(!height)
 ```
 
 <li>We can also use `where` to select those columns that satisfy a logical condition.</li>
 
-```{r}
-# height and weight are the only numeric columns
+```{r, eval = FALSE}
+# height and weight are the only numeric columns, so they are the only columns that remain
 cdc %>%
-  select(where(is.numeric)) %>%
-  head()
+  select(where(is.numeric))
 ```
 
 </ul>
@@ -126,12 +163,21 @@ cdc %>%
 
 <li>`filter` is used to subset rows.</li>
 
-```{r}
+```{r, eval = FALSE}
+# all rows satisfy the two conditions in filter
 cdc %>%
-  filter(height > 1.8, weight > 90) %>%
-  select(height, weight) %>%
-  head()
+  filter(height > 1.8, weight > 90)
 ```
+
+<li>Let's use `filter` to remove rows whose entries for `height`, `weight`, or `depressed` are `NA`.</li>
+
+```{r}
+# none of the entries in height, weight, or depressed are NA
+cdc_na_omit <- cdc %>%
+  filter(!is.na(height), !is.na(weight), !is.na(depressed))
+```
+
+<li>Let's use `cdc_na_omit` for the rest of the examples.</li>
 
 </ul>
 
@@ -141,20 +187,18 @@ cdc %>%
 
 <li>`mutate` is used to add or edit the columns of a dataframe. You can add new variables that are functions of existing variables:</li>
 
-```{r}
-cdc %>%
-  mutate(bmi = weight / height^2) %>%
-  select(height, weight, bmi) %>%
-  head()
+```{r, eval = FALSE}
+# now there is a column called bmi made using the formula in mutate
+cdc_na_omit %>%
+  mutate(bmi = weight / height^2)
 ```
 
 <li>You can also edit existing variables:</li>
 
-```{r}
-cdc %>%
-  mutate(height = height * 39.3701) %>%
-  select(height) %>%
-  head()
+```{r, eval = FALSE}
+# the heights are now in inches
+cdc_na_omit %>%
+  mutate(height = height * 39.3701)
 ```
 
 </ul>
@@ -165,8 +209,9 @@ cdc %>%
 
 <li>`summarize` reduces multiple values down to a single summary:</li>
 
-```{r, warning = FALSE}
-cdc %>%
+```{r, eval = FALSE}
+# output is a data frame whose entries are the mean height and mean weight
+cdc_na_omit %>%
   summarize(mean_height = mean(height), mean_weight = mean(weight))
 ```
 
@@ -178,23 +223,18 @@ cdc %>%
 
 <li>Most data operations are done on groups defined by variables. `group_by` takes a dataframe and converts it into a grouped dataframe where operations are performed "by group". `group_by` will almost always come directly before a call to `summarize` or `mutate`.</li>
 
-```{r, warning = FALSE}
-cdc %>%
+```{r, eval = FALSE}
+# output is a data frame whose entries are mean height for men and women
+cdc_na_omit %>%
   group_by(gender) %>%
   summarize(mean_height = mean(height))
 ```
 
-```{r, warning = FALSE}
-cdc %>%
-  group_by(gender) %>%
-  mutate(mean_height = mean(height)) %>%
-  select(gender, height, mean_height)
-```
-
 <li>You can group by multiple columns:</li>
 
-```{r, warning = FALSE}
-cdc %>%
+```{r, eval = FALSE}
+# output is a data frame whose entries are mean height for all four combinations of gender and depressed
+cdc_na_omit %>%
   group_by(gender, depressed) %>%
   summarize(mean_height = mean(height))
 ```
@@ -207,25 +247,28 @@ cdc %>%
 
 <li>`arrange` orders the rows of a data frame by the values of selected columns.</li>
 
-```{r, warning = FALSE}
-cdc %>%
-  arrange(height) %>%
-  select(height, weight) %>%
-  head()
+```{r, eval = FALSE}
+# entries are in increasing height order
+cdc_na_omit %>%
+  arrange(height)
 ```
 
-```{r, warning = FALSE}
-cdc %>%
-  arrange(height, weight) %>%
-  select(height, weight) %>%
-  head()
+```{r, eval = FALSE}
+# entries are in increasing order by height, and by weight if height is tied
+cdc_na_omit %>%
+  arrange(height, weight)
 ```
 
-```{r, warning = FALSE}
-cdc %>%
-  arrange(weight, height) %>%
-  select(height, weight) %>%
-  head()
-```
+</ul>
+
+## Test your understanding!
+
+<ul>
+
+<li>**In the `cdc` data frame, the `weight` column is reported in kilograms. Add a column to `cdc` called `weight_lbs` which is weights reported in pounds.**</li>
+
+<li>**Obtain the median `height` for every combination of `gender` and `grade`.**</li>
+
+<li>**Create a data frame consisting only of 14 year olds and including only the first ten columns of `cdc`.**</li>
 
 </ul>

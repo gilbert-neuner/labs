@@ -570,7 +570,8 @@ One of the most important elements of <code>dplyr</code> is the
 sequences of nested functions much more readable.
 </li>
 <li>
-Let’s see how the pipe works on the next slide.
+Let’s see how the pipe works on the next slide, using
+non-<code>dplyr</code> functions.
 </li>
 </ul>
 </div>
@@ -578,14 +579,13 @@ Let’s see how the pipe works on the next slide.
 <h1>How does the pipe work?</h1>
 <ul>
 <li>
-Suppose that for some reason, we are interested in finding the square
-root of the absolute value of the cosine of the number 2.
+Suppose that for some reason, we are interested in finding the cosine of
+the base 3 logarithm of the square root of the number 2.
 </li>
 <li>
 One way to compute this value is the following line of code:
 </li>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">abs</span>(<span class="fu">cos</span>(<span class="dv">2</span>)))</span></code></pre></div>
-<pre><code>## [1] 0.6450944</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">cos</span>(<span class="fu">log</span>(<span class="fu">sqrt</span>(<span class="dv">2</span>), <span class="at">base =</span> <span class="dv">3</span>))</span></code></pre></div>
 <li>
 To see the order in which functions are performed on the number 2, you
 have to read from inside to outside.
@@ -593,11 +593,14 @@ have to read from inside to outside.
 <li>
 Using the pipe, we could instead write
 </li>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="dv">2</span> <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="fu">cos</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  <span class="fu">abs</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>  <span class="fu">sqrt</span>()</span></code></pre></div>
-<pre><code>## [1] 0.6450944</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="dv">2</span> <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  <span class="fu">sqrt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="fu">log</span>(<span class="at">base =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  <span class="fu">cos</span>()</span></code></pre></div>
+<li>
+<strong>Verify that these two snippets evaluate to the same
+output.</strong>
+</li>
 <li>
 The pipe takes the object on the left side and makes it the first
 argument of the function on the right side. Chaining pipes together
@@ -605,76 +608,86 @@ allows you to read the order in which functions are performed from left
 to right.
 </li>
 <li>
-Notice how there is a new line after every pipe. This is not strictly
-necessary, but it is common practice and makes the code more readable.
+Notice how there is a new line after every pipe. This is not necessary,
+but it is common practice and makes the code more readable.
 </li>
 <li>
-<strong>Which snippet is more readable?</strong>
+<strong>Which snippet do you think is more readable?</strong>
 </li>
+</ul>
+</div>
+<div id="the-dplyr-verbs-in-action" class="slide section level2">
+<h1>The dplyr verbs in action</h1>
+<ul>
+<li>
+In the next few slides, we will see some examples of the
+<code>dplyr</code> verbs used to manipulate the <code>cdc</code>
+dataset.
+</li>
+<li>
+<strong>Run the following code to familiarize yourself with the
+<code>cdc</code> dataset:</strong>
+</li>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">View</span>(cdc)</span></code></pre></div>
+<li>
+In the next few slides, note the following:
+</li>
+<ul>
+<li>
+The pipe is always used to nest functions, for readability purposes.
+</li>
+<li>
+The <code>dplyr</code> verbs take data frames as input, modify them, and
+give data frames as output.
+</li>
+</ul>
+<li>
+In the next few slides, the code snippets contain comments which
+describe what the output should look like. <strong>As an exercise, run
+the code snippets yourself and verify that the comments are
+correct.</strong>
+</li>
+<ul>
+<li>
+Hint: to <code>View</code> the manipulated data frame, you can assign
+the output to a variable name, such as <code>df</code>, and then
+<code>View</code> the dataframe. For example:
+</li>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="fu">select</span>(height, weight)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="fu">View</span>(df)</span></code></pre></div>
+</ul>
 </ul>
 </div>
 <div id="select" class="slide section level2">
 <h1>select</h1>
 <ul>
 <li>
-<code>select</code> is used to subset columns (head is used to print
-only the first 6 rows).
+<code>select</code> is used to subset columns.
 </li>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="fu">select</span>(height, weight) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
-<pre><code>##   height weight
-## 1   1.63  54.89
-## 2   1.60  53.98
-## 3   1.68  43.09
-## 4   1.78  68.95
-## 5   1.78  58.97
-## 6   1.68  74.84</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># the only remaining columns are height and weight</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="fu">select</span>(height, weight)</span></code></pre></div>
 <li>
 To select a range of consecutive variables, use a colon (:).
 </li>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="fu">select</span>(race<span class="sc">:</span>seat_belt) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
-<pre><code>##                               race height weight        seat_belt
-## 1 American Indian or Alaska Native   1.63  54.89 Most of the time
-## 2                             &lt;NA&gt;   1.60  53.98           Always
-## 3                             &lt;NA&gt;   1.68  43.09 Most of the time
-## 4                            White   1.78  68.95 Most of the time
-## 5                             &lt;NA&gt;   1.78  58.97 Most of the time
-## 6                            White   1.68  74.84 Most of the time</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># the only remaining columns are those between race and seat_belt</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="fu">select</span>(race<span class="sc">:</span>seat_belt)</span></code></pre></div>
 <li>
 To take the complement of a set of variables, use an exclamation mark
 (!).
 </li>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># The outermost function called is names, to get the variable names of the new data frame</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co"># Notice that height is not present in the list of names</span></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>height) <span class="sc">%&gt;%</span></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  <span class="fu">names</span>()</span></code></pre></div>
-<pre><code>##  [1] &quot;age&quot;              &quot;gender&quot;           &quot;grade&quot;            &quot;hisp_latino&quot;     
-##  [5] &quot;race&quot;             &quot;weight&quot;           &quot;seat_belt&quot;        &quot;drive_text&quot;      
-##  [9] &quot;bully_school&quot;     &quot;bully_electronic&quot; &quot;depressed&quot;        &quot;days_smoking&quot;    
-## [13] &quot;days_vaping&quot;      &quot;sexuality&quot;        &quot;describe_weight&quot;  &quot;drink_juice&quot;     
-## [17] &quot;eat_fruit&quot;        &quot;eat_salad&quot;        &quot;drink_soda&quot;       &quot;drink_milk&quot;      
-## [21] &quot;eat_breakfast&quot;    &quot;days_exercise_60&quot; &quot;hours_tv&quot;         &quot;hours_videogame&quot; 
-## [25] &quot;number_teams&quot;     &quot;asthma&quot;           &quot;hours_sleep&quot;      &quot;drink_sportdrink&quot;
-## [29] &quot;drink_water&quot;</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># all columns remain except for height</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>height)</span></code></pre></div>
 <li>
 We can also use <code>where</code> to select those columns that satisfy
 a logical condition.
 </li>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># height and weight are the only numeric columns</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
-<pre><code>##   height weight
-## 1   1.63  54.89
-## 2   1.60  53.98
-## 3   1.68  43.09
-## 4   1.78  68.95
-## 5   1.78  58.97
-## 6   1.68  74.84</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># height and weight are the only numeric columns, so they are the only columns that remain</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric))</span></code></pre></div>
 </ul>
 </div>
 <div id="filter" class="slide section level2">
@@ -683,17 +696,20 @@ a logical condition.
 <li>
 <code>filter</code> is used to subset rows.
 </li>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>  <span class="fu">filter</span>(height <span class="sc">&gt;</span> <span class="fl">1.8</span>, weight <span class="sc">&gt;</span> <span class="dv">90</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>  <span class="fu">select</span>(height, weight) <span class="sc">%&gt;%</span></span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
-<pre><code>##   height weight
-## 1   1.83  90.72
-## 2   1.88  97.98
-## 3   1.83 154.22
-## 4   1.88 104.33
-## 5   1.88  90.72
-## 6   1.83 102.06</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># all rows satisfy the two conditions in filter</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">filter</span>(height <span class="sc">&gt;</span> <span class="fl">1.8</span>, weight <span class="sc">&gt;</span> <span class="dv">90</span>)</span></code></pre></div>
+<li>
+Let’s use <code>filter</code> to remove rows whose entries for
+<code>height</code>, <code>weight</code>, or <code>depressed</code> are
+<code>NA</code>.
+</li>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># none of the entries in height, weight, or depressed are NA</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>cdc_na_omit <span class="ot">&lt;-</span> cdc <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(height), <span class="sc">!</span><span class="fu">is.na</span>(weight), <span class="sc">!</span><span class="fu">is.na</span>(depressed))</span></code></pre></div>
+<li>
+Let’s use <code>cdc_na_omit</code> for the rest of the examples.
+</li>
 </ul>
 </div>
 <div id="mutate" class="slide section level2">
@@ -703,31 +719,15 @@ a logical condition.
 <code>mutate</code> is used to add or edit the columns of a dataframe.
 You can add new variables that are functions of existing variables:
 </li>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi =</span> weight <span class="sc">/</span> height<span class="sc">^</span><span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  <span class="fu">select</span>(height, weight, bmi) <span class="sc">%&gt;%</span></span>
-<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
-<pre><code>##   height weight      bmi
-## 1   1.63  54.89 20.65942
-## 2   1.60  53.98 21.08594
-## 3   1.68  43.09 15.26715
-## 4   1.78  68.95 21.76177
-## 5   1.78  58.97 18.61192
-## 6   1.68  74.84 26.51644</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># now there is a column called bmi made using the formula in mutate</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>cdc_na_omit <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi =</span> weight <span class="sc">/</span> height<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <li>
 You can also edit existing variables:
 </li>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">height =</span> height <span class="sc">*</span> <span class="fl">39.3701</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="fu">select</span>(height) <span class="sc">%&gt;%</span></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
-<pre><code>##     height
-## 1 64.17326
-## 2 62.99216
-## 3 66.14177
-## 4 70.07878
-## 5 70.07878
-## 6 66.14177</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># the heights are now in inches</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>cdc_na_omit <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">height =</span> height <span class="sc">*</span> <span class="fl">39.3701</span>)</span></code></pre></div>
 </ul>
 </div>
 <div id="summarize" class="slide section level2">
@@ -736,10 +736,9 @@ You can also edit existing variables:
 <li>
 <code>summarize</code> reduces multiple values down to a single summary:
 </li>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_height =</span> <span class="fu">mean</span>(height), <span class="at">mean_weight =</span> <span class="fu">mean</span>(weight))</span></code></pre></div>
-<pre><code>##   mean_height mean_weight
-## 1    1.692431    67.91106</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># output is a data frame whose entries are the mean height and mean weight</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>cdc_na_omit <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_height =</span> <span class="fu">mean</span>(height), <span class="at">mean_weight =</span> <span class="fu">mean</span>(weight))</span></code></pre></div>
 </ul>
 </div>
 <div id="group_by" class="slide section level2">
@@ -752,56 +751,17 @@ dataframe where operations are performed “by group”.
 <code>group_by</code> will almost always come directly before a call to
 <code>summarize</code> or <code>mutate</code>.
 </li>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_height =</span> <span class="fu">mean</span>(height))</span></code></pre></div>
-<pre><code>## # A tibble: 3 × 2
-##   gender mean_height
-##   &lt;fct&gt;        &lt;dbl&gt;
-## 1 Female        1.63
-## 2 Male          1.76
-## 3 &lt;NA&gt;        NaN</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_height =</span> <span class="fu">mean</span>(height)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>  <span class="fu">select</span>(gender, height, mean_height)</span></code></pre></div>
-<pre><code>## # A tibble: 13,677 × 3
-## # Groups:   gender [3]
-##    gender height mean_height
-##    &lt;fct&gt;   &lt;dbl&gt;       &lt;dbl&gt;
-##  1 Male     1.63        1.76
-##  2 Male     1.6         1.76
-##  3 Female   1.68        1.63
-##  4 Male     1.78        1.76
-##  5 Male     1.78        1.76
-##  6 Female   1.68        1.63
-##  7 Female   1.65        1.63
-##  8 Male     1.88        1.76
-##  9 Female   1.6         1.63
-## 10 Male     1.68        1.76
-## # … with 13,667 more rows
-## # ℹ Use `print(n = ...)` to see more rows</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># output is a data frame whose entries are mean height for men and women</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>cdc_na_omit <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_height =</span> <span class="fu">mean</span>(height))</span></code></pre></div>
 <li>
 You can group by multiple columns:
 </li>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, depressed) <span class="sc">%&gt;%</span></span>
-<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_height =</span> <span class="fu">mean</span>(height))</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;gender&#39;. You can override using the
-## `.groups` argument.</code></pre>
-<pre><code>## # A tibble: 9 × 3
-## # Groups:   gender [3]
-##   gender depressed mean_height
-##   &lt;fct&gt;  &lt;fct&gt;           &lt;dbl&gt;
-## 1 Female Yes              1.62
-## 2 Female No               1.63
-## 3 Female &lt;NA&gt;             1.61
-## 4 Male   Yes              1.76
-## 5 Male   No               1.76
-## 6 Male   &lt;NA&gt;             1.75
-## 7 &lt;NA&gt;   Yes            NaN   
-## 8 &lt;NA&gt;   No             NaN   
-## 9 &lt;NA&gt;   &lt;NA&gt;           NaN</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># output is a data frame whose entries are mean height for all four combinations of gender and depressed</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>cdc_na_omit <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, depressed) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_height =</span> <span class="fu">mean</span>(height))</span></code></pre></div>
 </ul>
 </div>
 <div id="arrange" class="slide section level2">
@@ -811,39 +771,30 @@ You can group by multiple columns:
 <code>arrange</code> orders the rows of a data frame by the values of
 selected columns.
 </li>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>  <span class="fu">arrange</span>(height) <span class="sc">%&gt;%</span></span>
-<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>  <span class="fu">select</span>(height, weight) <span class="sc">%&gt;%</span></span>
-<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
-<pre><code>##   height weight
-## 1   1.30  64.41
-## 2   1.32  63.50
-## 3   1.32  96.16
-## 4   1.32  64.41
-## 5   1.32 105.69
-## 6   1.32  65.77</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>  <span class="fu">arrange</span>(height, weight) <span class="sc">%&gt;%</span></span>
-<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>  <span class="fu">select</span>(height, weight) <span class="sc">%&gt;%</span></span>
-<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
-<pre><code>##   height weight
-## 1   1.30  64.41
-## 2   1.32  43.09
-## 3   1.32  63.50
-## 4   1.32  64.41
-## 5   1.32  65.77
-## 6   1.32  96.16</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>  <span class="fu">arrange</span>(weight, height) <span class="sc">%&gt;%</span></span>
-<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a>  <span class="fu">select</span>(height, weight) <span class="sc">%&gt;%</span></span>
-<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
-<pre><code>##   height weight
-## 1   1.35  27.22
-## 2   1.45  28.12
-## 3   1.50  31.30
-## 4   1.50  34.02
-## 5   1.55  34.02
-## 6   1.55  35.83</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># entries are in increasing height order</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>cdc_na_omit <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>  <span class="fu">arrange</span>(height)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># entries are in increasing order by height, and by weight if height is tied</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>cdc_na_omit <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="fu">arrange</span>(height, weight)</span></code></pre></div>
+</ul>
+</div>
+<div id="test-your-understanding" class="slide section level2">
+<h1>Test your understanding!</h1>
+<ul>
+<li>
+<strong>In the <code>cdc</code> data frame, the <code>weight</code>
+column is reported in kilograms. Add a column to <code>cdc</code> called
+<code>weight_lbs</code> which is weights reported in pounds.</strong>
+</li>
+<li>
+<strong>Obtain the median <code>height</code> for every combination of
+<code>gender</code> and <code>grade</code>.</strong>
+</li>
+<li>
+<strong>Create a data frame consisting only of 14 year olds and
+including only the first ten columns of <code>cdc</code>.</strong>
+</li>
 </ul>
 </div>
 
