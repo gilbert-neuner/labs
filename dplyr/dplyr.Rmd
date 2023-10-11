@@ -99,22 +99,12 @@ View(cdc)
   
   <li>The pipe is always used to nest functions, for readability purposes.</li>
   
-  <li>The `dplyr` verbs take data frames as input, modify them, and give data frames as output.</li>
+  <li>The `dplyr` verbs take data frames as input, manipulate them, and give data frames as output.</li>
   
-  </ul>
-
-<li>In the next few slides, the code snippets contain comments which describe what the output should look like. **As an exercise, run the code snippets yourself and verify that the comments are correct.**</li>
-
-  <ul>
+  <li>The code snippets contain comments which describe what the output should look like. **As an exercise, run the code snippets yourself and verify that the comments are correct.**</li>
   
-  <li>Hint: to `View` the manipulated data frame, you can assign the output to a variable name, such as `df`, and then `View` the dataframe. For example:</li>
+  <li>We will assign the outputted data frames to `df`. To `View` the output, run `View(df)`.</li>
   
-```{r, eval = FALSE}
-df <- cdc %>%
-  select(height, weight)
-View(df)
-```
-
   </ul>
 
 </ul>
@@ -135,7 +125,7 @@ df <- cdc %>%
 
 ```{r, eval = FALSE}
 # the only remaining columns are those between race and seat_belt
-cdc %>%
+df <- cdc %>%
   select(race:seat_belt)
 ```
 
@@ -143,7 +133,7 @@ cdc %>%
 
 ```{r, eval = FALSE}
 # all columns remain except for height
-cdc %>%
+df <- cdc %>%
   select(!height)
 ```
 
@@ -151,11 +141,43 @@ cdc %>%
 
 ```{r, eval = FALSE}
 # height and weight are the only numeric columns, so they are the only columns that remain
-cdc %>%
+df <- cdc %>%
   select(where(is.numeric))
 ```
 
 </ul>
+
+<!-- ## pull -->
+
+<!-- <ul> -->
+
+<!-- <li>The `pull` function is also used to subset columns, but is less commonly used and subtly different than `select`.</li> -->
+
+<!-- <li>The `select` function can subset an arbitrary number of columns, and always returns a data frame. The `pull` function extracts only one column, but returns a vector.</li> -->
+
+<!-- <li>The advantage of data frames is that they can store multiple columns, and those columns can be of different classes. When you're working with only one column, its is often easier to treat it as a vector rather than a data frame.</li> -->
+
+<!-- <li>Suppose we are interested in calculating the mean `height` in the `cdc` dataset. **Which snippet below works?**</li> -->
+
+<!-- ```{r, eval = FALSE} -->
+<!-- # select the heights column -->
+<!-- cdc_heights <- cdc %>% -->
+<!--   select(height) -->
+
+<!-- # compute the mean -->
+<!-- mean(cdc_heights) -->
+<!-- ``` -->
+
+<!-- ```{r, eval = FALSE} -->
+<!-- # pull the heights column -->
+<!-- cdc_heights <- cdc %>% -->
+<!--   pull(height) -->
+
+<!-- # compute the mean -->
+<!-- mean(cdc_heights) -->
+<!-- ``` -->
+
+<!-- </ul> -->
 
 ## filter
 
@@ -164,20 +186,79 @@ cdc %>%
 <li>`filter` is used to subset rows.</li>
 
 ```{r, eval = FALSE}
-# all rows satisfy the two conditions in filter
-cdc %>%
+# all rows satisfy the condition
+df <- cdc %>%
+  filter(height > 1.8)
+```
+
+<li>Commas can be used to subset by multiple conditions.</li>
+
+```{r, eval = FALSE}
+# all rows satisfy both conditions
+df <- cdc %>%
   filter(height > 1.8, weight > 90)
 ```
 
-<li>Let's use `filter` to remove rows whose entries for `height`, `weight`, or `depressed` are `NA`.</li>
+<li>Commas are used when you want to subset by one condition AND another condition. If you want to subset by one condition OR another condition, use the vertical bar `|`.</li>
+
+```{r}
+# all rows satisfy one of the following conditions
+df <- cdc %>%
+  filter(grade == "9th grade" | grade == "10th grade")
+```
+
+<li>In the above, if you replace the vertical bar with a comma, the output is empty (as you should verify). **Why do you think this is**?</li>
+
+</ul>
+
+<!-- ## An aside on factors -->
+
+<!-- <li>Suppose that after filtering the `cdc` dataset for only 9th and 10th graders, we were interested in `tally`ing the number of students in each grade. Using the pipe, that might look something like this:</li> -->
+
+<!-- ```{r, eval = FALSE} -->
+<!-- # this part is the same as before -->
+<!-- df_underclassmen <- cdc %>% -->
+<!--   filter(grade == "9th grade" | grade == "10th grade") %>% -->
+<!--   mutate( -->
+<!--     grade = droplevels(grade) -->
+<!--   ) -->
+
+<!-- # 11th and 12th graders appear in the tally! How strange! -->
+<!-- tally(~grade, data = df_underclassmen) -->
+<!-- ``` -->
+
+<!-- <li>Oddly, 11th grade, 12th grade, and ungraded appear in the `tally`. We would like for `tally` to count only 9th and 10th graders, since we already know that they are the only one present in `df_underclassmen`.</li> -->
+
+<!-- <li>The reason this happens is because the column `grade` is stored as a factor. (You can verify this yourself by `Viewing` df and then hovering your cursor over the name of the `grade` column.)</li> -->
+
+<!-- <li>A factor is a kind of data object used for storing categorical data. Factors have an attribute called `levels` which is the set of allowable values.</li> -->
+
+<!-- <li>**Run the code below to view the `levels` of the factor `grade` in `df_underclassmen`.**</li> -->
+
+<!-- ```{r, eval = FALSE} -->
+<!-- # we pull grade instead of selecting grade so we can work directly with grade as a factor -->
+<!-- underclassmen_grade <- df_underclassmen %>% -->
+<!--   pull(grade) -->
+
+<!-- # the levels function allows you to view the levels of a factor -->
+<!-- levels(underclassmen_grade) -->
+<!-- ``` -->
+
+## A bit of cleaning
+
+<ul>
+
+<li>Let's use `filter` to remove rows whose entries for `height`, `weight`, `gender`, or `depressed` are `NA`.</li>
+
+<li>The `is.na` function returns `TRUE` whenever the argument is `NA` and `FALSE` otherwise.</li>
 
 ```{r}
 # none of the entries in height, weight, or depressed are NA
-cdc_na_omit <- cdc %>%
-  filter(!is.na(height), !is.na(weight), !is.na(depressed))
+cdc_complete <- cdc %>%
+  filter(!is.na(height), !is.na(weight), !is.na(gender), !is.na(depressed))
 ```
 
-<li>Let's use `cdc_na_omit` for the rest of the examples.</li>
+<li>The remaining `dplyr` verbs work better in the absence of `NA`s. Let's use `cdc_complete` for the rest of the examples.</li>
 
 </ul>
 
@@ -189,7 +270,7 @@ cdc_na_omit <- cdc %>%
 
 ```{r, eval = FALSE}
 # now there is a column called bmi made using the formula in mutate
-cdc_na_omit %>%
+df <- cdc_complete %>%
   mutate(bmi = weight / height^2)
 ```
 
@@ -197,7 +278,7 @@ cdc_na_omit %>%
 
 ```{r, eval = FALSE}
 # the heights are now in inches
-cdc_na_omit %>%
+df <- cdc_complete %>%
   mutate(height = height * 39.3701)
 ```
 
@@ -211,7 +292,7 @@ cdc_na_omit %>%
 
 ```{r, eval = FALSE}
 # output is a data frame whose entries are the mean height and mean weight
-cdc_na_omit %>%
+df <- cdc_complete %>%
   summarize(mean_height = mean(height), mean_weight = mean(weight))
 ```
 
@@ -225,16 +306,16 @@ cdc_na_omit %>%
 
 ```{r, eval = FALSE}
 # output is a data frame whose entries are mean height for men and women
-cdc_na_omit %>%
+df <- cdc_complete %>%
   group_by(gender) %>%
   summarize(mean_height = mean(height))
 ```
 
-<li>You can group by multiple columns:</li>
+<li>You can group by multiple columns (you may ignore the warning message):</li>
 
 ```{r, eval = FALSE}
 # output is a data frame whose entries are mean height for all four combinations of gender and depressed
-cdc_na_omit %>%
+df <- cdc_complete %>%
   group_by(gender, depressed) %>%
   summarize(mean_height = mean(height))
 ```
@@ -249,13 +330,13 @@ cdc_na_omit %>%
 
 ```{r, eval = FALSE}
 # entries are in increasing height order
-cdc_na_omit %>%
+df <- cdc_complete %>%
   arrange(height)
 ```
 
 ```{r, eval = FALSE}
 # entries are in increasing order by height, and by weight if height is tied
-cdc_na_omit %>%
+df <- cdc_complete %>%
   arrange(height, weight)
 ```
 

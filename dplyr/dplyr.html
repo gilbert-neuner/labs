@@ -637,25 +637,18 @@ In the next few slides, note the following:
 The pipe is always used to nest functions, for readability purposes.
 </li>
 <li>
-The <code>dplyr</code> verbs take data frames as input, modify them, and
-give data frames as output.
+The <code>dplyr</code> verbs take data frames as input, manipulate them,
+and give data frames as output.
 </li>
-</ul>
 <li>
-In the next few slides, the code snippets contain comments which
-describe what the output should look like. <strong>As an exercise, run
-the code snippets yourself and verify that the comments are
-correct.</strong>
+The code snippets contain comments which describe what the output should
+look like. <strong>As an exercise, run the code snippets yourself and
+verify that the comments are correct.</strong>
 </li>
-<ul>
 <li>
-Hint: to <code>View</code> the manipulated data frame, you can assign
-the output to a variable name, such as <code>df</code>, and then
-<code>View</code> the dataframe. For example:
+We will assign the outputted data frames to <code>df</code>. To
+<code>View</code> the output, run <code>View(df)</code>.
 </li>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="fu">select</span>(height, weight)</span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="fu">View</span>(df)</span></code></pre></div>
 </ul>
 </ul>
 </div>
@@ -665,30 +658,51 @@ the output to a variable name, such as <code>df</code>, and then
 <li>
 <code>select</code> is used to subset columns.
 </li>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># the only remaining columns are height and weight</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="fu">select</span>(height, weight)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># the only remaining columns are height and weight</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="fu">select</span>(height, weight)</span></code></pre></div>
 <li>
 To select a range of consecutive variables, use a colon (:).
 </li>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># the only remaining columns are those between race and seat_belt</span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="fu">select</span>(race<span class="sc">:</span>seat_belt)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># the only remaining columns are those between race and seat_belt</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="fu">select</span>(race<span class="sc">:</span>seat_belt)</span></code></pre></div>
 <li>
 To take the complement of a set of variables, use an exclamation mark
 (!).
 </li>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># all columns remain except for height</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>height)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># all columns remain except for height</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>height)</span></code></pre></div>
 <li>
 We can also use <code>where</code> to select those columns that satisfy
 a logical condition.
 </li>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># height and weight are the only numeric columns, so they are the only columns that remain</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric))</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># height and weight are the only numeric columns, so they are the only columns that remain</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric))</span></code></pre></div>
 </ul>
+<!-- ## pull -->
+<!-- <ul> -->
+<!-- <li>The `pull` function is also used to subset columns, but is less commonly used and subtly different than `select`.</li> -->
+<!-- <li>The `select` function can subset an arbitrary number of columns, and always returns a data frame. The `pull` function extracts only one column, but returns a vector.</li> -->
+<!-- <li>The advantage of data frames is that they can store multiple columns, and those columns can be of different classes. When you're working with only one column, its is often easier to treat it as a vector rather than a data frame.</li> -->
+<!-- <li>Suppose we are interested in calculating the mean `height` in the `cdc` dataset. **Which snippet below works?**</li> -->
+<!-- ```{r, eval = FALSE} -->
+<!-- # select the heights column -->
+<!-- cdc_heights <- cdc %>% -->
+<!--   select(height) -->
+<!-- # compute the mean -->
+<!-- mean(cdc_heights) -->
+<!-- ``` -->
+<!-- ```{r, eval = FALSE} -->
+<!-- # pull the heights column -->
+<!-- cdc_heights <- cdc %>% -->
+<!--   pull(height) -->
+<!-- # compute the mean -->
+<!-- mean(cdc_heights) -->
+<!-- ``` -->
+<!-- </ul> -->
 </div>
 <div id="filter" class="slide section level2">
 <h1>filter</h1>
@@ -696,19 +710,72 @@ a logical condition.
 <li>
 <code>filter</code> is used to subset rows.
 </li>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># all rows satisfy the two conditions in filter</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>cdc <span class="sc">%&gt;%</span></span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># all rows satisfy the condition</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="fu">filter</span>(height <span class="sc">&gt;</span> <span class="fl">1.8</span>)</span></code></pre></div>
+<li>
+Commas can be used to subset by multiple conditions.
+</li>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># all rows satisfy both conditions</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc <span class="sc">%&gt;%</span></span>
 <span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">filter</span>(height <span class="sc">&gt;</span> <span class="fl">1.8</span>, weight <span class="sc">&gt;</span> <span class="dv">90</span>)</span></code></pre></div>
 <li>
-Let’s use <code>filter</code> to remove rows whose entries for
-<code>height</code>, <code>weight</code>, or <code>depressed</code> are
-<code>NA</code>.
+Commas are used when you want to subset by one condition AND another
+condition. If you want to subset by one condition OR another condition,
+use the vertical bar <code>|</code>.
 </li>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># none of the entries in height, weight, or depressed are NA</span></span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>cdc_na_omit <span class="ot">&lt;-</span> cdc <span class="sc">%&gt;%</span></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(height), <span class="sc">!</span><span class="fu">is.na</span>(weight), <span class="sc">!</span><span class="fu">is.na</span>(depressed))</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># all rows satisfy one of the following conditions</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="fu">filter</span>(grade <span class="sc">==</span> <span class="st">&quot;9th grade&quot;</span> <span class="sc">|</span> grade <span class="sc">==</span> <span class="st">&quot;10th grade&quot;</span>)</span></code></pre></div>
 <li>
-Let’s use <code>cdc_na_omit</code> for the rest of the examples.
+In the above, if you replace the vertical bar with a comma, the output
+is empty (as you should verify). <strong>Why do you think this
+is</strong>?
+</li>
+</ul>
+<!-- ## An aside on factors -->
+<!-- <li>Suppose that after filtering the `cdc` dataset for only 9th and 10th graders, we were interested in `tally`ing the number of students in each grade. Using the pipe, that might look something like this:</li> -->
+<!-- ```{r, eval = FALSE} -->
+<!-- # this part is the same as before -->
+<!-- df_underclassmen <- cdc %>% -->
+<!--   filter(grade == "9th grade" | grade == "10th grade") %>% -->
+<!--   mutate( -->
+<!--     grade = droplevels(grade) -->
+<!--   ) -->
+<!-- # 11th and 12th graders appear in the tally! How strange! -->
+<!-- tally(~grade, data = df_underclassmen) -->
+<!-- ``` -->
+<!-- <li>Oddly, 11th grade, 12th grade, and ungraded appear in the `tally`. We would like for `tally` to count only 9th and 10th graders, since we already know that they are the only one present in `df_underclassmen`.</li> -->
+<!-- <li>The reason this happens is because the column `grade` is stored as a factor. (You can verify this yourself by `Viewing` df and then hovering your cursor over the name of the `grade` column.)</li> -->
+<!-- <li>A factor is a kind of data object used for storing categorical data. Factors have an attribute called `levels` which is the set of allowable values.</li> -->
+<!-- <li>**Run the code below to view the `levels` of the factor `grade` in `df_underclassmen`.**</li> -->
+<!-- ```{r, eval = FALSE} -->
+<!-- # we pull grade instead of selecting grade so we can work directly with grade as a factor -->
+<!-- underclassmen_grade <- df_underclassmen %>% -->
+<!--   pull(grade) -->
+<!-- # the levels function allows you to view the levels of a factor -->
+<!-- levels(underclassmen_grade) -->
+<!-- ``` -->
+</div>
+<div id="a-bit-of-cleaning" class="slide section level2">
+<h1>A bit of cleaning</h1>
+<ul>
+<li>
+Let’s use <code>filter</code> to remove rows whose entries for
+<code>height</code>, <code>weight</code>, <code>gender</code>, or
+<code>depressed</code> are <code>NA</code>.
+</li>
+<li>
+The <code>is.na</code> function returns <code>TRUE</code> whenever the
+argument is <code>NA</code> and <code>FALSE</code> otherwise.
+</li>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># none of the entries in height, weight, or depressed are NA</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>cdc_complete <span class="ot">&lt;-</span> cdc <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(height), <span class="sc">!</span><span class="fu">is.na</span>(weight), <span class="sc">!</span><span class="fu">is.na</span>(gender), <span class="sc">!</span><span class="fu">is.na</span>(depressed))</span></code></pre></div>
+<li>
+The remaining <code>dplyr</code> verbs work better in the absence of
+<code>NA</code>s. Let’s use <code>cdc_complete</code> for the rest of
+the examples.
 </li>
 </ul>
 </div>
@@ -719,15 +786,15 @@ Let’s use <code>cdc_na_omit</code> for the rest of the examples.
 <code>mutate</code> is used to add or edit the columns of a dataframe.
 You can add new variables that are functions of existing variables:
 </li>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># now there is a column called bmi made using the formula in mutate</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>cdc_na_omit <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi =</span> weight <span class="sc">/</span> height<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># now there is a column called bmi made using the formula in mutate</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc_complete <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi =</span> weight <span class="sc">/</span> height<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <li>
 You can also edit existing variables:
 </li>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># the heights are now in inches</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>cdc_na_omit <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">height =</span> height <span class="sc">*</span> <span class="fl">39.3701</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># the heights are now in inches</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc_complete <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">height =</span> height <span class="sc">*</span> <span class="fl">39.3701</span>)</span></code></pre></div>
 </ul>
 </div>
 <div id="summarize" class="slide section level2">
@@ -736,9 +803,9 @@ You can also edit existing variables:
 <li>
 <code>summarize</code> reduces multiple values down to a single summary:
 </li>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># output is a data frame whose entries are the mean height and mean weight</span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>cdc_na_omit <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_height =</span> <span class="fu">mean</span>(height), <span class="at">mean_weight =</span> <span class="fu">mean</span>(weight))</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># output is a data frame whose entries are the mean height and mean weight</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc_complete <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_height =</span> <span class="fu">mean</span>(height), <span class="at">mean_weight =</span> <span class="fu">mean</span>(weight))</span></code></pre></div>
 </ul>
 </div>
 <div id="group_by" class="slide section level2">
@@ -751,17 +818,17 @@ dataframe where operations are performed “by group”.
 <code>group_by</code> will almost always come directly before a call to
 <code>summarize</code> or <code>mutate</code>.
 </li>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># output is a data frame whose entries are mean height for men and women</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>cdc_na_omit <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_height =</span> <span class="fu">mean</span>(height))</span></code></pre></div>
-<li>
-You can group by multiple columns:
-</li>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># output is a data frame whose entries are mean height for all four combinations of gender and depressed</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>cdc_na_omit <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, depressed) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># output is a data frame whose entries are mean height for men and women</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc_complete <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
 <span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_height =</span> <span class="fu">mean</span>(height))</span></code></pre></div>
+<li>
+You can group by multiple columns (you may ignore the warning message):
+</li>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># output is a data frame whose entries are mean height for all four combinations of gender and depressed</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc_complete <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, depressed) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_height =</span> <span class="fu">mean</span>(height))</span></code></pre></div>
 </ul>
 </div>
 <div id="arrange" class="slide section level2">
@@ -771,12 +838,12 @@ You can group by multiple columns:
 <code>arrange</code> orders the rows of a data frame by the values of
 selected columns.
 </li>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># entries are in increasing height order</span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>cdc_na_omit <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>  <span class="fu">arrange</span>(height)</span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># entries are in increasing order by height, and by weight if height is tied</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>cdc_na_omit <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="fu">arrange</span>(height, weight)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># entries are in increasing height order</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc_complete <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="fu">arrange</span>(height)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># entries are in increasing order by height, and by weight if height is tied</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> cdc_complete <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>  <span class="fu">arrange</span>(height, weight)</span></code></pre></div>
 </ul>
 </div>
 <div id="test-your-understanding" class="slide section level2">
