@@ -248,14 +248,15 @@ df <- cdc %>%
 
 <ul>
 
-<li>Let's use `filter` to remove rows whose entries for `height`, `weight`, `gender`, or `depressed` are `NA`.</li>
+<li>Let's use `filter` to remove rows whose entries for `height`, `weight`, `grade`, `gender`, or `depressed` are `NA`. Let's also remove rows whose entries for `grade` are "Ungraded or other grade".</li>
 
 <li>The `is.na` function returns `TRUE` whenever the argument is `NA` and `FALSE` otherwise.</li>
 
 ```{r}
-# none of the entries in height, weight, or depressed are NA
+# none of the entries in height, weight, grade, gender or depressed are NA
 cdc_complete <- cdc %>%
-  filter(!is.na(height), !is.na(weight), !is.na(gender), !is.na(depressed))
+  filter(!is.na(height), !is.na(weight), !is.na(grade), !is.na(gender), !is.na(depressed)) %>%
+  filter(grade != "Ungraded or other grade")
 ```
 
 <li>The remaining `dplyr` verbs work better in the absence of `NA`s. Let's use `cdc_complete` for the rest of the examples.</li>
@@ -280,6 +281,44 @@ df <- cdc_complete %>%
 # the heights are now in inches
 df <- cdc_complete %>%
   mutate(height = height * 39.3701)
+```
+
+</ul>
+
+## ifelse
+
+<ul>
+
+<li>The `ifelse` function is useful in conjunction with `mutate` to create a new column by checking a condition.</li>
+
+<li>The `ifelse` function takes three arguments:</li>
+
+<ul>
+
+  <li>`test`, which is the condition you are checking.</li>
+  
+  <li>`yes`, the return value if the condition is `TRUE`.</li>
+  
+  <li>`no`, the return value if the condition is `FALSE`.</li>
+  
+</ul>
+
+<li>Suppose we were interested in creating a column called `height_category` which indicates whether someone's height is above or below the mean for the dataset.</li>
+
+```{r, eval = FALSE}
+# added height_category which indicates whether someone's height is above or below the mean
+df <- cdc_complete %>%
+  mutate(height_category = ifelse(height > mean(height), "tall", "short"))
+```
+
+<li>In the above, we omit the argument names `test`, `yes`, and `no`. This is okay since we supplied the arguments in the correct order.</li>
+
+<li>We can also use the `ifelse` function for categorical variables. Suppose we want a column called `is_underclassman` that indicates whether a student is an "underclassman" (9th or 10th grader) or an "upperclassman" (11th or 12th grader).</li>
+
+```{r}
+# create a column called `is_underclassman` that indicates whether a student is underclassman or upperclassman
+df <- cdc_complete %>%
+  mutate(is_underclassman = ifelse(grade == "9th grade" | grade == "10th grade", "under", "upper"))
 ```
 
 </ul>
@@ -351,5 +390,7 @@ df <- cdc_complete %>%
 <li>**Obtain the median `height` for every combination of `gender` and `grade`.**</li>
 
 <li>**Create a data frame consisting only of 14 year olds and including only the first ten columns of `cdc`.**</li>
+
+<li>**Recreate the `height_category` column, but this time, for female students, compare their height to the mean height for females, and likewise for males.**</li>
 
 </ul>
