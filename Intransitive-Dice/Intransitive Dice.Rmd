@@ -1,0 +1,72 @@
+---
+title: "Intransitive Dice"
+author: "Gilbert Neuner"
+date: "2022-10-12"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r, echo = FALSE, message = FALSE}
+library(mobilizr)
+```
+
+Suppose we are given the following non-standard 6-sided dice:
+
+Die A: 2, 2, 6, 6, 7, 7
+
+Die B: 1, 1, 5, 5, 9, 9
+
+Die C: 3, 3, 4, 4, 8, 8
+
+The faces of these dice are stored in die_A, die_B, die_C:
+
+```{r}
+die_A <- c(2, 2, 6, 6, 7, 7)
+die_B <- c(1, 1, 5, 5, 9, 9)
+die_C <- c(3, 3, 4, 4, 8, 8)
+```
+
+We say that die X is "stronger" than die Y if X rolls higher than Y more than half the time. We will use simulation to investigate the question, "which die is strongest?"
+
+First, let's simulate 10000 rolls of each die, and assign them to rolls_A, rolls_B, and rolls_C. For example, the code to simulate 10000 rolls of die A looks like this:
+
+```{r}
+rolls_A <- sample(die_A, 10000, replace = TRUE)
+```
+
+```{r, echo = FALSE}
+rolls_B <- sample(die_B, 10000, replace = TRUE)
+rolls_C <- sample(die_C, 10000, replace = TRUE)
+```
+
+Once you've finished simulating 30000 dice rolls, use the following code to create a dataset that collects all the dice rolls.
+
+```{r}
+rolls <- data.frame(rolls_A, rolls_B, rolls_C)
+```
+
+Next we will add 3 variables to "rolls", corresponding to the 3 pairs of dice (A and B, A and C, B and C). The observations of these new variables will be the winner of each of the 10000 rolls. For example, here's how to add the column that compares die A and die B (if you're wondering how the "ifelse" function works, type "?ifelse" in your console).
+
+```{r}
+rolls <- mutate(rolls, AB = ifelse(rolls_A > rolls_B, yes = "A", no = "B"))
+```
+
+```{r, echo = FALSE}
+rolls <- mutate(rolls, 
+                AC = ifelse(rolls_A > rolls_C, yes = "A", no = "C"),
+                BC = ifelse(rolls_B > rolls_C, yes = "B", no = "C"))
+```
+
+Now, let's create bargraphs to determine which die is the strongest! For instance,
+
+```{r}
+bargraph(~AB, data = rolls)
+```
+
+```{r, eval = FALSE}
+bargraph(~AC, data = rolls)
+bargraph(~BC, data = rolls)
+```
+
+Based on your simulation, which die is the strongest? Hint: maybe there is no strongest die, and instead there is a "rock paper scissors relationship"!
