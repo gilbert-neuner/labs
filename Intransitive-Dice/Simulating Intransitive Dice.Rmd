@@ -1,0 +1,103 @@
+---
+title: "Simulating Intransitive Dice"
+author: "Lab ___"
+date: "Directions: Answer the bolded questions."
+output: 
+  slidy_presentation: 
+    css: ../../IDSLabCSSRev.css
+    mathjax: ../../extras/mathjax-local/MathJax.js
+  word_document:
+  ioslides_presentation: default
+---
+
+```{r, echo = FALSE, message = FALSE}
+library(mobilizr)
+```
+
+## Introduction
+
+<ul>
+
+<li>Suppose we are given the following non-standard 6-sided dice:</li>
+
+  <ul>
+  
+  <li>Die A: 2, 2, 6, 6, 7, 7</li>
+  
+  <li>Die B: 1, 1, 5, 5, 9, 9</li>
+  
+  <li>Die C: 3, 3, 4, 4, 8, 8</li>
+  
+  </ul>
+
+<li>Fill in the blanks below to store the three dice as numeric vectors.</li>
+
+```{r, eval = FALSE}
+die_a <- c(___, ___, ___, ___, ___, ___)
+die_b <- c(___, ___, ___, ___, ___, ___)
+die_c <- c(___, ___, ___, ___, ___, ___)
+```
+
+</ul>
+
+## Strong dice
+
+<ul>
+
+<li>We say that die X is **stronger** than die Y if X rolls higher than Y more than half the time. We wish to answer the question, "which die is strongest?''</li>
+
+<li>Of course, we could answer the question by enumerating all possibilities. However, the tool we will use to answer the question is **simulation**.</li>
+
+<li>In practice, simulation is a useful tool for estimating probabilities when calculating them analytically would be expensive or intractable.</li>
+
+</ul>
+
+## Simulating dice rolls
+
+<ul>
+
+<li>Fill in the blanks below to simulate 10000 rolls of each die.</li>
+
+```{r, eval = FALSE}
+rolls_A <- sample(___, ___, replace = ___)
+rolls_B <- sample(___, ___, replace = ___)
+rolls_C <- sample(___, ___, replace = ___)
+```
+
+<li>Once you've simulated 10000 rolls of each die, use the following code to create a data.frame collecting all the dice rolls.</li>
+
+```{r, eval = FALSE}
+rolls <- data.frame(rolls_A, rolls_B, rolls_C)
+```
+
+</ul>
+
+## Who won?
+
+<ul>
+
+<li>Next we will add 3 columns to `rolls`, called `A_vs_B`, `B_vs_C`, and `C_vs_A`. The n-th entry of `X_vs_Y` will be "X" when the n-th roll of X was greater than the n-th roll of Y, and "Y" otherwise.</li>
+
+<li>Fill in the blanks below to add three columns to `rolls`.</li>
+
+```{r, eval = FALSE}
+rolls <- mutate(___, A_vs_B = ifelse(___ > ___, yes = ___, no = ___))
+rolls <- mutate(___, B_vs_C = ifelse(___ > ___, yes = ___, no = ___))
+rolls <- mutate(___, C_vs_A = ifelse(___ > ___, yes = ___, no = ___))
+```
+
+</ul>
+
+## Visualize
+
+<ul>
+
+<li>Fill in the blanks below to create bargraphs visualizing the performance of the dice.</li>
+
+```{r, eval = FALSE}
+bargraph(~___, data = ___) # repeat for the three vs. columns
+```
+
+<li>Based on the bargraphs, how would you characterize the relationships between the dice?</li>
+
+</ul>
